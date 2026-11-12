@@ -266,21 +266,21 @@
     const G = chordGeo(), el = $('chord-panel');
     if (C.edge !== null) {
       const r = G.shared[C.edge];
-      redraw(el, `<button type="button" class="linkbtn" data-act="ch-back" data-focus="ch-back">← Back to ${esc(tname(C.sel))}</button>
+      redraw(el, `<div class="cp-head"><button type="button" class="linkbtn" data-act="ch-back" data-focus="ch-back">← Back to ${esc(tname(C.sel))}</button>
         <p class="kicker">Selected relationship</p><h3>${esc(tname(r.a))} + ${esc(tname(r.b))}</h3>
-        <p class="muted" style="margin:0">${plural(r.n, 'shared paper')}. The most cited:</p>
+        <p class="muted" style="margin:0">${plural(r.n, 'shared paper')}. The most cited:</p></div>
         <ol class="chord-papers">${r.papers.slice(0, 3).map((w) => `<li><a href="${esc(w.href || w.gs || '#')}">${esc(w.t)}</a><span class="muted">${w.y} · ${plural(w.c, 'citation')}</span></li>`).join('')}</ol>
-        <button type="button" class="btn" data-act="ch-pair" data-focus="ch-pair">See all ${plural(r.n, 'shared paper')} in the list</button>`);
+        <button type="button" class="btn cp-action" data-act="ch-pair" data-focus="ch-pair">See all ${plural(r.n, 'shared paper')} in the list</button>`);
       return;
     }
     const c = C.sel, links = G.shared.filter((r) => r.a === c || r.b === c).sort((x, y) => y.n - x.n);
     const tops = (D.theme_topics || {})[c] || [];
-    redraw(el, `<p class="kicker">Selected theme</p><h3>${esc(tname(c))}</h3>
-      <p class="muted" style="margin:0">${plural(tcount(c), 'paper')}. ${links.length === G.codes.length - 1 ? 'It shares papers with every other theme.' : `It shares papers with ${links.length} of the other themes.`} Select one to see the papers they share.</p>
-      <div><p class="sub">Connected to</p><ul class="chord-links">${links.map((r) => { const o = r.a === c ? r.b : r.a;
+    redraw(el, `<div class="cp-head"><p class="kicker">Selected theme</p><h3>${esc(tname(c))}</h3>
+      <p class="muted" style="margin:0">${plural(tcount(c), 'paper')}. ${links.length === G.codes.length - 1 ? 'It shares papers with every other theme.' : `It shares papers with ${links.length} of the other themes.`} Select one to see the papers they share.</p></div>
+      <div class="cp-cols"><div><p class="sub">Connected to</p><ul class="chord-links">${links.map((r) => { const o = r.a === c ? r.b : r.a;
         return `<li><button type="button" data-act="ch-edge" data-k="${r.k}" data-focus="ch-e${r.k}"><span><span class="sw" style="background:${tcol(o)}"></span>${esc(tname(o))}</span><span class="muted">${r.n} shared →</span></button></li>`; }).join('')}</ul></div>
-      ${tops.length ? `<div><p class="sub">Main topics</p><div class="chord-topics">${tops.map(([l, n]) => `<button type="button" class="chip" data-act="ch-topic" data-l="${esc(l)}" data-focus="ch-t-${esc(l)}">${esc(l)} <span class="n">${n}</span></button>`).join('')}</div></div>` : ''}
-      <button type="button" class="btn" data-act="ch-papers" data-focus="ch-papers">Show the ${plural(tcount(c), 'paper')} in this theme</button>`);
+      <div style="display:flex;flex-direction:column;gap:1rem">${tops.length ? `<div><p class="sub">Main topics</p><div class="chord-topics">${tops.map(([l, n]) => `<button type="button" class="chip" data-act="ch-topic" data-l="${esc(l)}" data-focus="ch-t-${esc(l)}">${esc(l)} <span class="n">${n}</span></button>`).join('')}</div></div>` : ''}
+      <button type="button" class="btn cp-action" data-act="ch-papers" data-focus="ch-papers">Show the ${plural(tcount(c), 'paper')} in this theme</button></div></div>`);
   }
   function chordTip(e) {
     const G = chordGeo(), tip = $('chord-tip'), H = C.hov;
