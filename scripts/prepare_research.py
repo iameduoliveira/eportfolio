@@ -170,7 +170,8 @@ def main():
         if any(same(w["title"], x["t"], w.get("year"), x["y"]) for x in works):
             continue
         co, venue, kind, tier, doi, af = from_oa(w)
-        add(w["title"], w.get("year"), w.get("gs_c") or w.get("cited_by_count"), co, venue, kind, tier, doi, af, "")
+        # citations come from Google Scholar only, so a paper Scholar hasn't listed yet counts 0 until it does
+        add(w["title"], w.get("year"), 0, co, venue, kind, tier, doi, af, "")
         oa_only += 1
 
     vt = {w["v"]: w["tier"] for w in works if w["tier"]}
@@ -228,7 +229,7 @@ def main():
     h = max([i + 1 for i, c in enumerate(cites) if c >= i + 1] or [0])
     out = {
         "generated_at": d.get("generated_at"), "scholar_fetched": m.get("scholar_fetched"),
-        "headline": {"works": len(works), "citations": sum(cites), "h": m.get("h") or h, "i10": m.get("i10") or sum(1 for c in cites if c >= 10),
+        "headline": {"works": len(works), "citations": m.get("citations") or sum(cites), "h": m.get("h") or h, "i10": m.get("i10") or sum(1 for c in cites if c >= 10),
                      "coauthors": len(m.get("collab_lab") or {}) + int(m.get("collab_external") or 0), "source": m.get("source", "")},
         "cby": m.get("cites_by_year") or {},
         "themes": [[t["code"], t["label"], t.get("long_label", t["label"]), t.get("description", "")] for t in cfg["themes"]],

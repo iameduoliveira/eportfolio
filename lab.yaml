@@ -17,8 +17,9 @@ settings:
   # Merge a preprint and its published version (same title) into one paper, like Google Scholar does
   merge_duplicate_titles: true
   network_max_authors: 50
-  # Google Scholar (via SerpApi) is refreshed at most this often; the update runs monthly
-  scholar_refresh_days: 25
+  # Google Scholar (via SerpApi) is fetched fresh on every monthly or "Run workflow" update
+  # (one SerpApi search each time). Runs on the same day reuse that day's numbers.
+  scholar_refresh_days: 1
   # The citing-countries map is not used on this site, so skip those lookups
   citing_countries: false
 
