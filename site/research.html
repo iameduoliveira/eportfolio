@@ -82,16 +82,14 @@
 <div style="display:flex;flex-wrap:wrap;gap:.5rem" id="insts"></div>
 </div>
 </section>
-<section class="section" aria-labelledby="topics-title">
-<h2 id="topics-title" class="h2">Topics I research</h2>
-<p class="section-intro" id="topics-intro">Larger words appear in more papers. Select a topic to list its papers below.</p>
-<div class="panel cloud" role="group" aria-label="Research topics" id="cloud"></div>
-</section>
-<section class="section" aria-labelledby="time-title">
-<h2 id="time-title" class="h2">My research over time</h2>
-<p class="section-intro">Papers in each theme, by period. Larger dots mean more papers; a paper can belong to more than one theme. Select a dot to list those papers below.</p>
-<p class="readout" aria-live="polite" id="time-readout">Hover over or select a dot.</p>
-<div class="panel" style="padding:.6rem 1rem;overflow-x:auto"><table class="dotgrid" id="dotgrid"><caption class="vh">Number of papers per research theme and period</caption></table></div>
+<section class="section" aria-labelledby="chord-title">
+<h2 id="chord-title" class="h2">How my themes connect</h2>
+<p class="section-intro">Each ribbon is a set of papers shared by two themes; the wider the ribbon, the more papers. Hover for details, select a theme to see its connections, or select a ribbon to see the papers behind it.</p>
+<div class="chips" id="chord-themes" role="group" aria-label="Choose a theme for the diagram" style="margin-bottom:1.2rem"></div>
+<div class="chord-wrap">
+<div class="chord-fig" id="chord-fig"><svg id="chord-svg" viewBox="-125 -12 890 684" role="img" aria-label="How my research themes connect. Ribbons show papers shared between two themes. The theme buttons and the Connected to list give the same choices by keyboard."></svg><div class="chord-tip" id="chord-tip" hidden></div></div>
+<div class="panel chord-panel" id="chord-panel" aria-live="polite"></div>
+</div>
 </section>
 <section id="publications" aria-labelledby="list-title">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;margin-bottom:.4rem">

@@ -1,15 +1,15 @@
-/* Research page: theme filter, charts, co-author network, topics, research over time and the publication list. */
+/* Research page: theme filter, charts, co-author network, how themes connect (chord) and the publication list. */
 (function () {
   const { esc, load, fail, plural, authors, delegate, reduceMotion } = window.EO;
   const $ = (id) => document.getElementById(id);
   const TYPES = [['Journal', 'var(--navy)', 'j'], ['Conference', 'var(--orange)', 'c'], ['Book chapter', 'var(--green)', 'b'], ['Preprint & other', 'var(--yellow)', 'p']];
   const RANKED = { 'CORE A*': 1, 'CORE A': 1, 'CORE B': 1, 'Q1': 1, 'Q2': 1 };
   const NOW = new Date().getFullYear();
-  const PERIODS = ['≤2015', '2016–19'].concat(Array.from({ length: NOW - 2019 }, (_, i) => String(2020 + i)));
-  const per = (y) => (!y ? null : y <= 2015 ? '≤2015' : y <= 2019 ? '2016–19' : String(y));
+  // theme colours for the chord only (validated for colour-blind readers; every arc is also labelled)
+  const CHORD_COLOURS = ['#1F4E99', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300'];
   const params = new URLSearchParams(location.search);
   const S = { theme: params.get('theme') || 'all', table: false, sel: null, hoverNode: null, upto: null, playing: false,
-    topic: null, cell: null, q: '', fType: 'all', fYear: 'all', sort: 'new', ranked: false, awarded: false, limit: 20 };
+    topic: null, pair: null, q: '', fType: 'all', fYear: 'all', sort: 'new', ranked: false, awarded: false, limit: 20 };
   let D, F, byId = {};
 
   /* keep keyboard focus on the same control after a section is redrawn */
@@ -37,7 +37,7 @@
 
   function renderAll() {
     F = D.works.filter(inTheme);
-    renderChips(); renderKpis(); renderPubs(); renderCites(); renderPeople(); renderSel(); renderInsts(); renderCloud(); renderGrid(); renderList(); drawNetwork();
+    renderChips(); renderKpis(); renderPubs(); renderCites(); renderPeople(); renderSel(); renderInsts(); renderChord(); renderList(); drawNetwork();
   }
 
   /* ---------- theme chips and headline numbers ---------- */
@@ -200,38 +200,117 @@
   }
   function setPlay() { const b = $('net-play'); b.textContent = S.playing ? 'Pause' : '▶ Play'; b.setAttribute('aria-pressed', S.playing); }
 
-  /* ---------- topics word cloud ---------- */
-  function renderCloud() {
-    const inF = new Set(F.map((w) => D.works.indexOf(w)));
-    const wl = D.words.map(([l, idx]) => ({ l, all: idx.length, n: idx.filter((i) => inF.has(i)).length }));
-    const wmax = Math.max(1, ...wl.map((x) => x.n));
-    const arranged = []; wl.slice().sort((a, b) => b.all - a.all).forEach((x, i) => { if (i % 2) arranged.push(x); else arranged.unshift(x); });
-    $('topics-intro').textContent = `Larger words appear in more papers${S.theme === 'all' ? '' : ' in ' + themeName()}. Select a topic to list its papers below.`;
-    redraw($('cloud'), arranged.map((x) => { const r = x.n / wmax;
-      return `<button type="button" data-act="topic" data-l="${esc(x.l)}" data-focus="t-${esc(x.l)}" aria-pressed="${S.topic === x.l}" title="${plural(x.n, 'paper')}" style="font-size:${(0.85 + r * 1.55).toFixed(2)}em;font-weight:${r > 0.6 ? 700 : r > 0.3 ? 600 : 500};color:${r > 0.45 ? 'var(--navy)' : '#3B5B8F'};opacity:${x.n ? 1 : 0.3}">${esc(x.l)}<span class="vh"> (${plural(x.n, 'paper')})</span></button>`; }).join(''));
+  /* ---------- how themes connect (chord diagram) ---------- */
+  const C = { sel: null, edge: null, hov: null, geo: null };
+  const tname = (c) => (D.themes.find((t) => t[0] === c) || ['', c])[1];
+  const tcount = (c) => D.works.filter((w) => w.th.indexOf(c) >= 0).length;
+  const tcol = (c) => CHORD_COLOURS[D.themes.findIndex((t) => t[0] === c) % CHORD_COLOURS.length];
+  function chordGeo() {
+    if (C.geo) return C.geo;
+    const codes = D.themes.map((t) => t[0]), shared = [];
+    codes.forEach((a, i) => codes.slice(i + 1).forEach((b) => {
+      const papers = D.works.filter((w) => w.th.indexOf(a) >= 0 && w.th.indexOf(b) >= 0);
+      if (papers.length) shared.push({ k: shared.length, a, b, n: papers.length, papers: papers.slice().sort((x, y) => y.c - x.c || y.y - x.y) });
+    }));
+    const tot = {}; codes.forEach((c) => { tot[c] = shared.filter((r) => r.a === c || r.b === c).reduce((s, r) => s + r.n, 0); });
+    const GAP = 0.06, all = codes.reduce((s, c) => s + tot[c], 0) || 1, scale = (2 * Math.PI - GAP * codes.length) / all;
+    const CX = 320, CY = 320, R0 = 210, R1 = 226, pt = (a, r) => [CX + r * Math.sin(a), CY - r * Math.cos(a)], f = (v) => v.toFixed(1);
+    const start = {}; let ang = 0; codes.forEach((c) => { start[c] = ang; ang += tot[c] * scale + GAP; });
+    const cur = Object.assign({}, start), seg = {};
+    codes.forEach((c) => {
+      const mine = shared.filter((r) => r.a === c || r.b === c).sort((x, y) => {
+        const o = (r) => (codes.indexOf(r.a === c ? r.b : r.a) - codes.indexOf(c) + codes.length) % codes.length; return o(x) - o(y); });
+      mine.forEach((r) => { const a0 = cur[c], a1 = a0 + r.n * scale; seg[r.k + c] = [a0, a1]; cur[c] = a1; });
+    });
+    shared.forEach((r) => {
+      const [a0, a1] = seg[r.k + r.a], [b0, b1] = seg[r.k + r.b], p0 = pt(a0, R0), p1 = pt(a1, R0), q0 = pt(b0, R0), q1 = pt(b1, R0);
+      r.d = `M${f(p0[0])},${f(p0[1])} A${R0},${R0} 0 0 1 ${f(p1[0])},${f(p1[1])} Q${CX},${CY} ${f(q0[0])},${f(q0[1])} A${R0},${R0} 0 0 1 ${f(q1[0])},${f(q1[1])} Q${CX},${CY} ${f(p0[0])},${f(p0[1])} Z`;
+    });
+    const arcs = codes.filter((c) => tot[c]).map((c) => {
+      const a0 = start[c], a1 = a0 + tot[c] * scale, large = a1 - a0 > Math.PI ? 1 : 0, o0 = pt(a0, R1), o1 = pt(a1, R1), i1 = pt(a1, R0 + 3), i0 = pt(a0, R0 + 3);
+      const mid = (a0 + a1) / 2, l = pt(mid, R1 + 16), s = Math.sin(mid);
+      return { c, d: `M${f(o0[0])},${f(o0[1])} A${R1},${R1} 0 ${large} 1 ${f(o1[0])},${f(o1[1])} L${f(i1[0])},${f(i1[1])} A${R0 + 3},${R0 + 3} 0 ${large} 0 ${f(i0[0])},${f(i0[1])} Z`,
+        x: l[0], y: l[1] + (Math.cos(mid) < -0.5 ? 14 : 0), anchor: s > 0.15 ? 'start' : s < -0.15 ? 'end' : 'middle' };
+    });
+    return (C.geo = { codes, shared, arcs });
   }
-
-  /* ---------- research over time (theme x period dot grid) ---------- */
-  function renderGrid() {
-    const fy = (k) => Math.min(...D.works.filter((w) => w.th.indexOf(k) >= 0 && w.y).map((w) => w.y));
-    const TH = D.themes.slice().sort((a, b) => fy(a[0]) - fy(b[0]));
-    let cmax = 1; const g = {};
-    TH.forEach((t) => { g[t[0]] = {}; PERIODS.forEach((p) => { const n = D.works.filter((w) => w.th.indexOf(t[0]) >= 0 && per(w.y) === p).length; g[t[0]][p] = n; cmax = Math.max(cmax, n); }); });
-    const head = '<caption class="vh">Number of papers per research theme and period</caption><thead><tr><th scope="col" style="text-align:left">Theme</th>' + PERIODS.map((p) => `<th scope="col">${p}</th>`).join('') + '</tr></thead>';
-    const body = '<tbody>' + TH.map((t) => `<tr style="opacity:${S.theme === 'all' || S.theme === t[0] ? 1 : 0.3}"><th scope="row">${esc(t[1])} <span class="muted" style="font-weight:400">${D.works.filter((w) => w.th.indexOf(t[0]) >= 0).length}</span></th>` +
-      PERIODS.map((p) => { const n = g[t[0]][p]; if (!n) return '<td><span aria-label="no papers" style="color:var(--line)">·</span></td>';
-        const d = Math.round(12 + Math.sqrt(n / cmax) * 28), on = S.cell && S.cell.th === t[0] && S.cell.p === p;
-        const lab = `${t[1]}, ${p}: ${plural(n, 'paper')}`;
-        return `<td><button type="button" class="dot-btn" data-act="cell" data-th="${esc(t[0])}" data-p="${esc(p)}" data-l="${esc(t[1])}" data-lab="${esc(lab)}" data-focus="c-${esc(t[0])}-${esc(p)}" aria-label="${esc(lab)}" aria-pressed="${!!on}"><span class="dot" style="width:${d}px;height:${d}px">${d >= 22 ? n : ''}</span></button></td>`; }).join('') + '</tr>').join('') + '</tbody>';
-    redraw($('dotgrid'), head + body);
+  function renderChord() {
+    const G = chordGeo();
+    if (!C.sel || (S.theme !== 'all' && C.sel !== S.theme && !C.userPicked)) C.sel = S.theme !== 'all' ? S.theme : G.codes.slice().sort((a, b) => tcount(b) - tcount(a))[0];
+    C.userPicked = false;
+    redraw($('chord-themes'), G.codes.map((c) => `<button type="button" class="chip" data-act="ch-theme" data-k="${esc(c)}" data-focus="ch-${esc(c)}" aria-pressed="${C.sel === c}"><span class="sw" style="background:${tcol(c)}"></span>${esc(tname(c))}</button>`).join(''));
+    paintChord();
+    renderChordPanel();
   }
+  function paintChord() {
+    const G = chordGeo(), H = C.hov;
+    const fEdge = H && H.kind === 'edge' ? H.k : (H ? null : C.edge);
+    const fTheme = H && H.kind === 'theme' ? H.c : (fEdge === null ? C.sel : null);
+    const ends = fEdge !== null ? [G.shared[fEdge].a, G.shared[fEdge].b] : [fTheme];
+    const ribs = G.shared.map((r) => {
+      let on, fill;
+      if (fEdge !== null) { on = r.k === fEdge; fill = on ? tcol(r.a === C.sel ? r.b : r.a) : '#B9C4D3'; }
+      else { on = r.a === fTheme || r.b === fTheme; fill = on ? tcol(r.a === fTheme ? r.b : r.a) : '#B9C4D3'; }
+      const op = fEdge !== null ? (on ? 0.9 : 0.12) : (on ? 0.7 : 0.2);
+      return `<path class="rib" data-act="ch-edge" data-k="${r.k}" data-rib="${r.k}" d="${r.d}" fill="${fill}" fill-opacity="${op}" stroke="${on && fEdge !== null ? 'var(--ink)' : '#fff'}" stroke-width="${on && fEdge !== null ? 1.5 : 1}"></path>`;
+    }).join('');
+    const arcs = G.arcs.map((a) => {
+      const lit = ends.indexOf(a.c) >= 0;
+      return `<g class="arc" data-act="ch-theme" data-k="${esc(a.c)}" data-arc="${esc(a.c)}"><path d="${a.d}" fill="${tcol(a.c)}" fill-opacity="${lit || fTheme === null && fEdge === null ? 1 : 0.45}"></path>
+        <text x="${a.x.toFixed(1)}" y="${a.y.toFixed(1)}" text-anchor="${a.anchor}" font-size="18" font-weight="${lit ? 700 : 500}" fill="var(--ink)">${esc(tname(a.c))}</text>
+        <text x="${a.x.toFixed(1)}" y="${(a.y + 21).toFixed(1)}" text-anchor="${a.anchor}" font-size="15" fill="var(--muted)">${plural(tcount(a.c), 'paper')}</text></g>`;
+    }).join('');
+    $('chord-svg').innerHTML = ribs + arcs;
+  }
+  function renderChordPanel() {
+    const G = chordGeo(), el = $('chord-panel');
+    if (C.edge !== null) {
+      const r = G.shared[C.edge];
+      redraw(el, `<button type="button" class="linkbtn" data-act="ch-back" data-focus="ch-back">← Back to ${esc(tname(C.sel))}</button>
+        <p class="kicker">Selected relationship</p><h3>${esc(tname(r.a))} + ${esc(tname(r.b))}</h3>
+        <p class="muted" style="margin:0">${plural(r.n, 'shared paper')}. The most cited:</p>
+        <ol class="chord-papers">${r.papers.slice(0, 3).map((w) => `<li><a href="${esc(w.href || w.gs || '#')}">${esc(w.t)}</a><span class="muted">${w.y} · ${plural(w.c, 'citation')}</span></li>`).join('')}</ol>
+        <button type="button" class="btn" data-act="ch-pair" data-focus="ch-pair">See all ${plural(r.n, 'shared paper')} in the list</button>`);
+      return;
+    }
+    const c = C.sel, links = G.shared.filter((r) => r.a === c || r.b === c).sort((x, y) => y.n - x.n);
+    const tops = (D.theme_topics || {})[c] || [];
+    redraw(el, `<p class="kicker">Selected theme</p><h3>${esc(tname(c))}</h3>
+      <p class="muted" style="margin:0">${plural(tcount(c), 'paper')}. ${links.length === G.codes.length - 1 ? 'It shares papers with every other theme.' : `It shares papers with ${links.length} of the other themes.`} Select one to see the papers they share.</p>
+      <div><p class="sub">Connected to</p><ul class="chord-links">${links.map((r) => { const o = r.a === c ? r.b : r.a;
+        return `<li><button type="button" data-act="ch-edge" data-k="${r.k}" data-focus="ch-e${r.k}"><span><span class="sw" style="background:${tcol(o)}"></span>${esc(tname(o))}</span><span class="muted">${r.n} shared →</span></button></li>`; }).join('')}</ul></div>
+      ${tops.length ? `<div><p class="sub">Main topics</p><div class="chord-topics">${tops.map(([l, n]) => `<button type="button" class="chip" data-act="ch-topic" data-l="${esc(l)}" data-focus="ch-t-${esc(l)}">${esc(l)} <span class="n">${n}</span></button>`).join('')}</div></div>` : ''}
+      <button type="button" class="btn" data-act="ch-papers" data-focus="ch-papers">Show the ${plural(tcount(c), 'paper')} in this theme</button>`);
+  }
+  function chordTip(e) {
+    const G = chordGeo(), tip = $('chord-tip'), H = C.hov;
+    if (!H) { tip.hidden = true; return; }
+    let html;
+    if (H.kind === 'theme') {
+      const links = G.shared.filter((r) => r.a === H.c || r.b === H.c).sort((x, y) => y.n - x.n), best = links[0];
+      const tops = ((D.theme_topics || {})[H.c] || []).slice(0, 3).map((x) => x[0]);
+      html = `<strong>${esc(tname(H.c))}</strong><span class="muted">${plural(tcount(H.c), 'paper')} · select to explore</span>` +
+        (tops.length ? `<span>Main topics: ${esc(tops.join(', '))}</span>` : '') +
+        (best ? `<span>Most connected to ${esc(tname(best.a === H.c ? best.b : best.a))} (${best.n} shared)</span>` : '');
+    } else {
+      const r = G.shared[H.k];
+      html = `<strong>${esc(tname(r.a))} + ${esc(tname(r.b))}</strong><span class="muted">${plural(r.n, 'shared paper')} · select to see them</span>` +
+        r.papers.slice(0, 2).map((w) => `<span>“${esc(w.t.length > 80 ? w.t.slice(0, 78) + '…' : w.t)}” (${w.y})</span>`).join('');
+    }
+    tip.innerHTML = html; tip.hidden = false;
+    if (e) {
+      const fig = $('chord-fig'), b = fig.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+      tip.style.left = (x > b.width - 300 ? Math.max(0, x - 290) : x + 18) + 'px'; tip.style.top = (y + 14) + 'px';
+    }
+  }
+  const toList = () => { const l = $('publications'); if (l) l.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); };
 
   /* ---------- publication list ---------- */
   function listFiltered() {
     const topicSet = S.topic ? new Set((D.words.find((x) => x[0] === S.topic) || [0, []])[1]) : null, q = S.q.trim().toLowerCase();
     const L = D.works.map((w, i) => Object.assign({ i }, w)).filter((w) => inTheme(w)
       && (!topicSet || topicSet.has(w.i))
-      && (!S.cell || (w.th.indexOf(S.cell.th) >= 0 && per(w.y) === S.cell.p))
+      && (!S.pair || (w.th.indexOf(S.pair[0]) >= 0 && w.th.indexOf(S.pair[1]) >= 0))
       && (S.fType === 'all' || w.k === S.fType)
       && (S.fYear === 'all' || (S.fYear === 'before2020' ? (w.y && w.y < 2020) : String(w.y) === S.fYear))
       && (!S.ranked || RANKED[w.tier]) && (!S.awarded || w.aw)
@@ -243,9 +322,9 @@
     const L = listFiltered(), cites = L.reduce((a, w) => a + w.c, 0);
     $('list-summary').textContent = (L.length === D.works.length ? '' : `Showing ${L.length} of `) + `${D.works.length} publications · ${cites} citations`;
     const chips = [];
-    if (S.cell) chips.push(`<button type="button" class="pill" data-act="clear-cell">${esc(S.cell.l + ' · ' + S.cell.p)} ×</button>`);
+    if (S.pair) chips.push(`<button type="button" class="pill" data-act="clear-pair">Shared by ${esc(tname(S.pair[0]))} + ${esc(tname(S.pair[1]))} ×</button>`);
     if (S.topic) chips.push(`<button type="button" class="pill" data-act="clear-topic">Topic: ${esc(S.topic)} ×</button>`);
-    if (S.q || S.fType !== 'all' || S.fYear !== 'all' || S.ranked || S.awarded || S.topic || S.cell) chips.push('<button type="button" class="btn" data-act="clear-list" style="min-height:36px">Clear filters</button>');
+    if (S.q || S.fType !== 'all' || S.fYear !== 'all' || S.ranked || S.awarded || S.topic || S.pair) chips.push('<button type="button" class="btn" data-act="clear-list" style="min-height:36px">Clear filters</button>');
     $('active-filters').innerHTML = chips.join('');
     if (!L.length) { $('pub-list').innerHTML = '<p class="empty">No publications match these filters. <button type="button" class="btn" data-act="clear-list" style="min-height:36px">Clear filters</button></p>'; return; }
     const shown = L.slice(0, S.limit), groups = [];
@@ -267,15 +346,19 @@
   function wire() {
     const main = $('main');
     delegate(main, 'click', {
-      theme: (el) => { S.theme = el.dataset.k; S.sel = null; reheat(0.4); renderAll(); },
+      theme: (el) => { S.theme = el.dataset.k; S.sel = null; C.edge = null; reheat(0.4); renderAll(); },
       person: (el) => { S.sel = S.sel === el.dataset.id ? null : el.dataset.id; renderPeople(); renderSel(); drawNetwork(); },
       'clear-sel': () => { S.sel = null; renderPeople(); renderSel(); drawNetwork(); },
-      topic: (el) => { S.topic = S.topic === el.dataset.l ? null : el.dataset.l; S.limit = 20; renderCloud(); renderList(); },
-      cell: (el) => { const same = S.cell && S.cell.th === el.dataset.th && S.cell.p === el.dataset.p; S.cell = same ? null : { th: el.dataset.th, p: el.dataset.p, l: el.dataset.l }; S.limit = 20; renderGrid(); renderList(); },
-      'clear-cell': () => { S.cell = null; renderGrid(); renderList(); },
-      'clear-topic': () => { S.topic = null; renderCloud(); renderList(); },
-      'clear-list': () => { Object.assign(S, { q: '', fType: 'all', fYear: 'all', ranked: false, awarded: false, topic: null, cell: null, limit: 20 });
-        $('q').value = ''; $('f-type').value = 'all'; $('f-year').value = 'all'; $('f-ranked').checked = false; $('f-award').checked = false; renderCloud(); renderGrid(); renderList(); },
+      'ch-theme': (el) => { C.sel = el.dataset.k; C.edge = null; C.userPicked = true; renderChord(); },
+      'ch-edge': (el) => { C.edge = +el.dataset.k; C.hov = null; $('chord-tip').hidden = true; paintChord(); renderChordPanel(); },
+      'ch-back': () => { C.edge = null; paintChord(); renderChordPanel(); },
+      'ch-pair': () => { const r = chordGeo().shared[C.edge]; S.pair = [r.a, r.b]; S.topic = null; S.limit = 20; renderList(); toList(); },
+      'ch-papers': () => { S.theme = C.sel; S.sel = null; C.userPicked = true; reheat(0.4); renderAll(); toList(); },
+      'ch-topic': (el) => { S.topic = el.dataset.l; S.pair = null; S.limit = 20; renderList(); toList(); },
+      'clear-pair': () => { S.pair = null; renderList(); },
+      'clear-topic': () => { S.topic = null; renderList(); },
+      'clear-list': () => { Object.assign(S, { q: '', fType: 'all', fYear: 'all', ranked: false, awarded: false, topic: null, pair: null, limit: 20 });
+        $('q').value = ''; $('f-type').value = 'all'; $('f-year').value = 'all'; $('f-ranked').checked = false; $('f-award').checked = false; renderList(); },
       more: () => { S.limit += 20; renderList(); },
     });
     $('table-toggle').addEventListener('click', () => { S.table = !S.table; renderPubs(); });
@@ -283,8 +366,15 @@
     $('pubs-chart').addEventListener('mouseleave', () => pubsHover(null));
     $('cites-chart').addEventListener('mouseover', (e) => { const b = e.target.closest('[data-cy]'); if (b) $('cites-readout').textContent = `${b.dataset.cy}: ${D.cby[b.dataset.cy]} citations${+b.dataset.cy === NOW ? ' so far' : ''}`; });
     $('cites-chart').addEventListener('mouseleave', () => { $('cites-readout').textContent = 'Hover over a year to see its citations.'; });
-    const tr = (e) => { const b = e.target.closest('[data-lab]'); $('time-readout').textContent = b ? b.dataset.lab : 'Hover over or select a dot.'; };
-    $('dotgrid').addEventListener('mouseover', tr); $('dotgrid').addEventListener('focusin', tr);
+    // chord: hover details follow the pointer
+    const csvg = $('chord-svg');
+    csvg.addEventListener('mousemove', (e) => {
+      const r = e.target.closest('[data-rib]'), a = e.target.closest('[data-arc]');
+      const h = r ? { kind: 'edge', k: +r.dataset.rib } : a ? { kind: 'theme', c: a.dataset.arc } : null;
+      const same = (h && C.hov && h.kind === C.hov.kind && h.k === C.hov.k && h.c === C.hov.c) || (!h && !C.hov);
+      C.hov = h; if (!same) paintChord(); chordTip(e);
+    });
+    csvg.addEventListener('mouseleave', () => { C.hov = null; paintChord(); chordTip(); });
     $('people').addEventListener('mouseover', (e) => { const b = e.target.closest('[data-id]'); if (b && S.hoverNode !== b.dataset.id) { S.hoverNode = b.dataset.id; drawNetwork(); } });
     $('people').addEventListener('mouseleave', () => { S.hoverNode = null; drawNetwork(); });
     $('q').addEventListener('input', (e) => { S.q = e.target.value; S.limit = 20; renderList(); });

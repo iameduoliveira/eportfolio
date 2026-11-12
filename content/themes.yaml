@@ -116,6 +116,16 @@ topics:
   keywords: hybrid intelligence
 - label: Help-seeking
   keywords: help-seeking
+
+# Topic curation for the Research page.
+# topic_merge: fold near-duplicates into one topic (target: [topics folded into it]).
+# topic_hide: topics left out because they describe the setting, not the subject.
+topic_merge:
+  Generative AI: [ChatGPT]
+  Transition network analysis: [Network analysis]
+  Authorship verification: [Stylometry]
+  Software engineering education: [Engineering education]
+topic_hide: [Higher education, Online learning, Middleware, Public interactive systems, Cognitive load, Problem-based learning, Learning strategies, Student motivation]
 openalex_keywords:
   Large language models: Large language models
   Generative AI: Generative AI

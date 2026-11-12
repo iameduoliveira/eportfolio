@@ -5,7 +5,7 @@
 name: Dr Eduardo Oliveira
 short_name: Eduardo Oliveira
 position: Senior Lecturer (Education-Focused) · The University of Melbourne
-tagline: I research how AI can support learning, not replace it.
+tagline: I'm an educator at heart, and a researcher by curiosity.
 roles: School of Computing and Information Systems · FEIT Assistant Dean (Diversity and Inclusion) · Interim Assistant Director of Education (CIS) · Senior Fellow of the Higher Education Academy
 photo: assets/img/eduardo-oliveira.jpg
 photo_alt: Eduardo Oliveira, smiling, wearing glasses, a navy blazer and a light blue shirt
@@ -20,10 +20,70 @@ links:
 - label: University profile
   url: https://findanexpert.unimelb.edu.au/profile/653031
 about:
-- I am a Senior Lecturer in the School of Computing and Information Systems at the University of Melbourne. I hold a Masters and PhD in Computer Science from the Federal University of Pernambuco (Brazil). Since the beginning of my teaching career I have been actively building relationships and working with universities, technology clusters, innovation institutes, government agencies and private companies to promote authentic and innovative teaching and learning practices. In 2022 I won the Faculty of Engineering and Information Technology (FEIT) Excellence Award in Teaching and Learning – The Kelvin Medal; in 2023 I received the University-wide Edward Brown Award for Teaching Excellence. In 2024 I was awarded the University of Melbourne GEM Scott Teaching Fellowship, which recognises the University's distinguished educational leaders and is based on a program of work.
-- During my scientific studies, which began in 2006, I worked with computer scientists, designers, educators and psychologists in educational contexts. My work was, and is, focused on teaching and researching artificial intelligence applied to online learning and engineering education. In 2013, my PhD was awarded Best PhD Thesis by the Brazilian Computer Society (SBC) at the Congress on Computers in Education.
-- 'Since 2016 I have worked with the Faculty of Education, the Assessment Research Centre and the Melbourne Centre for the Study of Higher Education on artificial intelligence in online teaching and learning. My expertise is in using artificial intelligence to model and assist tertiary students in digital learning environments. I combine machine learning and natural language processing with models of self-regulated learning. I am particularly interested in: (i) understanding how tertiary students learn independently, and how and when we can best support them; (ii) supporting students'' technical and professional skills through evidence-based explainable AI; and (iii) authorship verification and stylometry for academic integrity.'
-- Parallel to my research, I worked for 12 years as a Specialist System Engineer and Technical Consultant at CESAR (Recife, Pernambuco, Brazil), twice awarded the most innovative IT institute in Brazil, researching, leading and developing for Motorola, Samsung, Compal Electronics, Gemalto and other international projects.
+- I'm an educator, researcher and former software engineer who is passionate about improving how we teach and learn.
+- At the University of Melbourne, I explore how AI, learning analytics and educational technologies can make education more meaningful, inclusive and effective. My work is grounded in real educational challenges, with a focus on turning research into practical solutions that benefit students and educators.
+# journey: the "How my research has grown" chapters on Home (oldest first).
+#   from / to:  years (leave "to" empty for "now"). Paper counts and the most-cited paper are worked out
+#               from your publications, so they stay current.
+#   themes:     theme codes from themes.yaml (they link to the Research page); tags: extra words shown the same way
+#   grants / awards: one per row, each with a title and a detail line
+#   notes:      optional words added after a most-cited paper, keyed by the start of its title
+journey:
+- from: 2003
+  to: 2013
+  title: Research alongside industry
+  subtitle: Collaborative and smart learning environments
+  text: While working full time as a senior software engineer and technical leader at CESAR Innovation Centre (Brazil), on international projects with Motorola, Samsung and others, I completed my Masters and PhD, building i-Collaboration, an intelligent model, with a chatbot, for personalised collaboration in online learning.
+  themes: [sle, ai, se]
+  tags: [Mobile development, Industry internships, Agile methods]
+  awards:
+  - title: Best PhD Thesis
+    detail: Brazilian Computer Society, 2013
+  - title: Third Best Masters Dissertation
+    detail: Brazilian Computer Society, 2009
+- from: 2014
+  to: 2019
+  title: A new start in Melbourne
+  subtitle: Smart cities, health and public spaces
+  text: After moving to Melbourne in 2014, my research leaned towards smart cities, with context-aware middleware for health and fitness devices, smart urban planning, how audiences engage with public interactive systems, and how learning happens in museums.
+  themes: [sle, hai]
+  tags: [Smart cities, Smart campus, Health technologies, Museums]
+  grants:
+  - title: 'MyCampus: the University of Melbourne as a living lab'
+    detail: Melbourne Networked Society Institute · Chief Investigator · 2017
+  - title: 'Learning reflections: promoting learning in museums'
+    detail: McCoy Project with Museums Victoria · Chief Investigator · 2017
+  - title: Google CS Educator professional development
+    detail: Google · Co-investigator · 2018 and 2019
+  awards:
+  - title: Excellence Award in Tutoring
+    detail: School of Computing and Information Systems, 2017
+- from: 2020
+  to:
+  title: Technology and research in education
+  subtitle: AI that supports learning, not replaces it
+  text: With research time in my role for the first time from 2020, I've worked on learning analytics and self-regulated learning, writing analytics and explainable authorship verification, software engineering education and, since 2023, generative AI and what good teamwork between students and AI looks like.
+  themes: [ai, la, hai, se, sty]
+  grants:
+  - title: 'Positive Behaviour Support: best practice through collaboration'
+    detail: NDIS, with Flinders and Queensland · Chief Investigator · 2021–2023
+  - title: 'AI Ally: co-designing anti-harassment AI with girls and young women'
+    detail: eSafety Commissioner · Chief Investigator · 2024–2025
+  - title: Fostering AI literacy at scale
+    detail: GEM Scott Teaching Fellowship · Lead · 2024–2025
+  - title: Argumentation in university writing compared to TOEFL iBT writing
+    detail: TOEFL Committee of Examiners · Co-investigator · 2026–2027
+  awards:
+  - title: Best Student Paper
+    detail: AIED 2026
+  - title: Best Paper
+    detail: ICSLE 2025
+  - title: Hanson Medal
+    detail: IChemE, 2024
+  - title: Best Concise Paper
+    detail: ASCILITE 2023
+journey_notes:
+  Uncovering the Honeypot Effect: a collaboration with Microsoft on a project designed for the White Night Melbourne festival
 highlights:
 - label: Featured
   title: Dynalytics

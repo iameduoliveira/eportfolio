@@ -223,7 +223,20 @@ def main():
             P = T["papers"][p]
             if SLUG in P.get("m", []) and key(P["t"]) in wkey:
                 words.setdefault(lab, set()).add(wkey[key(P["t"])])
+    # your curation in themes.yaml: fold near-duplicates together and leave out topics that are context, not subject
+    for target, sources in (cfg.get("topic_merge") or {}).items():
+        for src in sources or []:
+            words.setdefault(target, set()).update(words.pop(src, set()))
+    for lab in cfg.get("topic_hide") or []:
+        words.pop(lab, None)
     wl = sorted([[l, sorted(s)] for l, s in words.items() if len(s) >= 2], key=lambda x: -len(x[1]))
+    # main topics of each theme: the topics most common among that theme's papers (not the theme's own name)
+    theme_topics = {}
+    for t in cfg["themes"]:
+        ids = {i for i, w in enumerate(works) if t["code"] in w["th"]}
+        names = {norm(t["label"]), norm(t.get("long_label", ""))}
+        ranked = sorted(((l, len(ids & set(s))) for l, s in wl if norm(l) not in names), key=lambda x: -x[1])
+        theme_topics[t["code"]] = [[l, n] for l, n in ranked if n >= 2][:5]
 
     cites = sorted((w["c"] for w in works), reverse=True)
     h = max([i + 1 for i, c in enumerate(cites) if c >= i + 1] or [0])
@@ -233,7 +246,7 @@ def main():
                      "coauthors": len(m.get("collab_lab") or {}) + int(m.get("collab_external") or 0), "source": m.get("source", "")},
         "cby": m.get("cites_by_year") or {},
         "themes": [[t["code"], t["label"], t.get("long_label", t["label"]), t.get("description", "")] for t in cfg["themes"]],
-        "works": works, "nodes": nodes, "edges": edges, "inst": [[k, v] for k, v in ip.most_common(10)], "words": wl,
+        "works": works, "nodes": nodes, "edges": edges, "inst": [[k, v] for k, v in ip.most_common(10)], "words": wl, "theme_topics": theme_topics,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
