@@ -10,7 +10,7 @@ My personal academic website. It is a plain static site (HTML, CSS and JavaScrip
 | `content/grants.yaml` | Grants page | Yes |
 | `content/awards.yaml` | Awards page | Yes |
 | `content/teaching.yaml` | Teaching page | Yes |
-| `content/talks.yaml` | Talks & writing page (and its map) | Yes |
+| `content/talks.yaml` | Projects & talks page (and its map) | Yes |
 | `content/themes.yaml` | Research themes, word-cloud topics, and per-paper theme corrections | Yes |
 | `venues.yaml` | Venue types and ranks (CORE, Q1, Q2, …), same format as the EF dashboard | Yes |
 | `lab.yaml` | Settings for the monthly publications update (ORCID, Scholar profile) | Rarely |
@@ -65,5 +65,7 @@ To fetch fresh publications locally: `OPENALEX_API_KEY=... SERPAPI_KEY=... pytho
 
 - Google Scholar decides which papers exist, their years and citation counts (headline numbers on Home and Research).
 - OpenAlex adds paper type, venue, rank, co-authors and institutions where it knows the paper; otherwise they come from Google Scholar.
-- Themes come from title keywords in `content/themes.yaml`, overridden by your per-paper corrections.
+- Papers OpenAlex already lists but Google Scholar has not picked up yet are added too (news pieces are left out), so new papers show up and count straight away. When Scholar catches up, the two records are merged automatically.
+- Your name is always shown as Eduardo Oliveira, whatever spelling a database uses.
+- Themes come from title keywords in `content/themes.yaml`, overridden by your per-paper corrections. The same file can add co-authors that Scholar cut off with "..." (`coauthors:`) or hide a paper (`hide: true`).
 - Grants, awards, teaching and talks are exactly what is in the YAML files.

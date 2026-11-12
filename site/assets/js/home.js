@@ -16,25 +16,13 @@
         </div>
       </div>`;
 
-    // headline numbers + citations sparkline (2015 onwards)
-    const H = R.headline, now = new Date().getFullYear();
-    const years = Object.keys(R.cby).filter((y) => +y >= 2015).sort();
-    const max = Math.max(1, ...years.map((y) => R.cby[y]));
+    // headline numbers (each links to the Research page)
+    const H = R.headline;
     const stat = (v, l) => `<a href="research.html" style="text-decoration:none;color:inherit"><div class="stat-v">${esc(v)}</div><div class="stat-l">${esc(l)}</div></a>`;
-    const first = years[0], last = years[years.length - 1];
     document.getElementById('home-stats').innerHTML =
-      `<div style="display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-end;justify-content:space-between">
-        <div class="stats-grid" style="flex:1 1 520px;grid-template-columns:repeat(4,minmax(0,1fr))">
-          ${stat(H.works, 'publications')}${stat(H.citations, 'citations')}${stat(H.h, 'h-index')}${stat(H.coauthors, 'co-authors')}
-        </div>
-        <figure style="margin:0;flex:0 1 340px">
-          <div role="img" aria-label="Citations per year, from ${R.cby[first]} in ${first} to ${R.cby[last]} in ${last}${+last === now ? ' so far' : ''}" style="display:flex;align-items:flex-end;gap:5px;height:72px">
-            ${years.map((y) => `<div title="${y}: ${R.cby[y]} citations" style="flex:1 1 0;height:${Math.max(4, Math.round(R.cby[y] / max * 72))}px;background:var(${+y === now ? '--navy-faint' : '--navy'});border-radius:3px 3px 0 0"></div>`).join('')}
-          </div>
-          <figcaption class="small muted" style="margin-top:.5rem;display:flex;justify-content:space-between"><span>Citations per year, ${first}–${last}</span><span>${+last === now ? last + ' to date' : ''}</span></figcaption>
-        </figure>
-      </div>
-      <p class="small muted" style="margin:1.2rem 0 0">Source: Google Scholar and OpenAlex, updated monthly. Last update ${esc(fmtDate(R.scholar_fetched || R.generated_at))}. <a href="research.html">Explore my research →</a></p>`;
+      `<div class="stats-grid" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+        ${stat(H.works, 'publications')}${stat(H.citations, 'citations')}${stat(H.h, 'h-index')}${stat(H.coauthors, 'co-authors')}
+      </div>`;
 
     // about
     document.getElementById('about').innerHTML = (P.about || []).map((p) => `<p style="margin:0 0 1em">${esc(p)}</p>`).join('');
@@ -61,9 +49,4 @@
     }
   }).catch((e) => fail(document.getElementById('home-stats'), e));
 
-  function fmtDate(iso) {
-    if (!iso) return '';
-    const d = new Date(iso);
-    return isNaN(d) ? '' : d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
-  }
 })();
