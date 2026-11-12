@@ -1,0 +1,246 @@
+# talks.yaml — the Talks & writing page.
+#   type:  Keynote or invited talk | Workshop | University seminar | Writing | In the media
+#   label: the badge shown (Keynote, Invited talk, Panel, Article, ...)
+#   place: a key from 'places' (add new places with lat/lon to put them on the map)
+#   year:  leave empty (null) if unknown; month is optional (Jan, Feb, ...)
+
+featured:
+- kicker: Open software · contributor
+  title: Dynalytics
+  text: An open framework and software ecosystem in R, Python and JavaScript for analysing dynamic systems, from transition networks to higher-order networks, with built-in statistical validation of every finding.
+  link_text: Explore Dynalytics
+  url: https://dynasite.org/#/
+- kicker: Book chapters · open access · 2025
+  title: 'Advanced Learning Analytics Methods: AI, Precision and Complexity'
+  text: Three chapters on explainable and evaluative AI, large language models in education, and using LLMs to explain predictive models. Edited by Mohammed Saqr and Sonsoles López-Pernas (Springer).
+  link_text: Read the book
+  url: https://link.springer.com/book/10.1007/978-3-031-95365-1
+places:
+  finland:
+    name: Finland
+    lat: 62.6
+    lon: 29.76
+  indonesia:
+    name: Yogyakarta, Indonesia
+    lat: -7.77
+    lon: 110.38
+  brazil:
+    name: Brazil
+    lat: -15.8
+    lon: -47.9
+  recife:
+    name: Recife, Brazil
+    lat: -8.05
+    lon: -34.88
+  vietnam:
+    name: Ho Chi Minh City, Vietnam
+    lat: 10.82
+    lon: 106.63
+  korea:
+    name: Seoul, South Korea
+    lat: 37.57
+    lon: 126.98
+  melbourne:
+    name: Melbourne
+    lat: -37.81
+    lon: 144.96
+  brisbane:
+    name: Brisbane
+    lat: -27.47
+    lon: 153.03
+items:
+- year: 2027
+  type: Workshop
+  label: Workshop co-organiser and presenter
+  title: Transition Network Analysis workshop at LAK 2027
+  where: International Learning Analytics and Knowledge Conference (LAK 2027), Recife
+  place: recife
+  url: https://sites.uef.fi/learning-analytics/tna-lak-workshop-2027/
+- year: 2026
+  month: Oct
+  type: Keynote or invited talk
+  label: Keynote
+  title: 'Scaffolding responsible human–AI collaboration in higher education: assuring learning through agency, evidence and trust'
+  where: Finnish Learning Analytics and AI in Education Conference (FLAIEC)
+  place: finland
+- year: 2026
+  type: Workshop
+  label: Workshop co-organiser and presenter
+  title: Transition Network Analysis pre-conference workshop
+  where: Koli Calling International Conference on Computing Education Research 2026
+  place: finland
+  url: https://www.kolicalling.fi/pre-conference-tna-workshop-2026/
+- year: 2026
+  month: Jun
+  type: Workshop
+  label: Workshop co-organiser and presenter
+  title: Modeling dynamics of learning and learners with the Transition Network Analysis toolkit
+  where: Festival of Learning 2026, Seoul
+  place: korea
+  url: https://sites.uef.fi/learning-analytics/tna-festival-workshop-2026/
+- year: 2026
+  month: Mar
+  type: University seminar
+  label: Seminar
+  title: 'Assuring learning in large capstone subjects: designing, calibrating and moderating interactive oral assessments at scale'
+  where: 'Melbourne CSHE symposium: Implementing Interactive Oral Assessments'
+  place: melbourne
+- year: 2025
+  month: Dec
+  type: University seminar
+  label: Seminar
+  title: 'Assuring learning in the age of AI: a vision for human–AI hybrid intelligence'
+  where: FEIT Teaching and Learning Lab
+  place: melbourne
+- year: 2025
+  month: Nov
+  type: Keynote or invited talk
+  label: Closing presentation
+  title: 'Human–AI hybrid intelligence: a vision of the future'
+  where: La Trobe Learning and Teaching Conference
+  place: melbourne
+- year: 2025
+  month: Sep
+  type: Keynote or invited talk
+  label: Keynote
+  title: 'Assuring learning in the age of AI: a vision for human–AI hybrid intelligence'
+  where: QUT School of Electrical Engineering and Robotics Annual Learning & Teaching Conference
+  place: brisbane
+- year: 2025
+  month: Sep
+  type: Keynote or invited talk
+  label: Keynote
+  title: Human–AI collaboration or academic misconduct? Measuring AI use in student writing through stylometric evidence
+  where: Australasian Academic Integrity Network Forum 2025
+  place: melbourne
+- year: 2025
+  month: Sep
+  type: Keynote or invited talk
+  label: Invited talk
+  title: Secured assessment in the age of AI
+  where: Universitas Gadjah Mada, Yogyakarta
+  place: indonesia
+- year: 2025
+  month: Jun
+  type: University seminar
+  label: Closing presentation
+  title: Practical examples in the use of GenAI for MDHS
+  where: Faculty of Medicine, Dentistry & Health Sciences Learning and Teaching Conference
+  place: melbourne
+- year: 2025
+  month: Oct
+  type: Writing
+  label: Book chapters
+  title: 'Three chapters in Advanced Learning Analytics Methods: AI, Precision and Complexity'
+  where: Springer (open access), edited by Mohammed Saqr and Sonsoles López-Pernas
+  url: https://link.springer.com/book/10.1007/978-3-031-95365-1
+  parts:
+  - title: 'AI, explainable AI and evaluative AI: informed data-driven decision-making in education'
+    url: https://lamethods.github.io/book2/chapters/ch02-AIxAI/ch02-aixai.html
+  - title: An introduction to large language models in education
+    url: https://lamethods.github.io/book2/chapters/ch08-llms/ch08-llms.html
+  - title: 'LLMs for explainable artificial intelligence: automating natural language explanations of predictive analytics models'
+    url: https://lamethods.github.io/book2/chapters/ch11-llmsxai/ch11-llmsxai.html
+- year: 2024
+  month: Dec
+  type: Keynote or invited talk
+  label: Invited talk
+  title: 'Measuring SRL in digital learning environments: challenges and innovations'
+  where: SRL in Higher Education Summit
+  place: melbourne
+- year: 2024
+  month: Nov
+  type: University seminar
+  label: Invited talk
+  title: The future of education
+  where: Melbourne Connect (with Kayley Lyons)
+  place: melbourne
+- year: 2024
+  month: Sep
+  type: Writing
+  label: Article
+  title: Online spaces are rife with toxicity. Well-designed AI tools can help clean them up
+  where: The Conversation, with Lucy Sparrow and Mahli-Ann Butt
+  url: https://theconversation.com/online-spaces-are-rife-with-toxicity-well-designed-ai-tools-can-help-clean-them-up-239590
+- year: 2024
+  month: May
+  type: In the media
+  label: In the media
+  title: Experts hope AI tool can cut use of restraints and seclusion on NDIS participants
+  where: The Guardian (Australia)
+  url: https://www.theguardian.com/australia-news/article/2024/may/05/australian-experts-ai-tool-ndis-disability-support
+- year: 2024
+  month: Apr
+  type: In the media
+  label: In the media
+  title: New AI tool to help practitioners deliver high-quality support to people with disability
+  where: Faculty of Arts news, University of Melbourne
+  url: https://arts.unimelb.edu.au/news/new-ai-tool-to-help-practitioners-deliver-high-quality-support-to-people-with-disability
+- year: 2023
+  month: Dec
+  type: Keynote or invited talk
+  label: Keynote
+  title: 'Building responsible AI-powered teaching and learning initiatives: curriculum innovation at the University of Melbourne'
+  where: Brazilian Congress on Computers in Education (CBIE)
+  place: brazil
+- year: 2023
+  month: Oct
+  type: Keynote or invited talk
+  label: Keynote
+  title: What makes a good engineer? Lessons from my experience in the IT industry
+  where: IDP Education, Ho Chi Minh City
+  place: vietnam
+- year: 2023
+  month: Jun
+  type: University seminar
+  label: Seminar
+  title: Stylometric fingerprints for personalised communication in an AI-enhanced education
+  where: 'Melbourne CSHE symposium: Assessment and GenAI'
+  place: melbourne
+- year: 2023
+  month: Jun
+  type: University seminar
+  label: Seminar
+  title: 'Scaffolding GenAI literacy and fluency at scale: a behavioural self-assessment instrument'
+  where: 'Melbourne CSHE symposium: Assessment and GenAI'
+  place: melbourne
+- year: 2023
+  month: Feb
+  type: University seminar
+  label: Seminar
+  title: Strategies for teaching and assessment considering generative AI tools
+  where: FEIT Teaching and Learning Lab (with Shannon Rios)
+  place: melbourne
+- year: 2022
+  month: Jul
+  type: Keynote or invited talk
+  label: Invited talk
+  title: 'Enabling adaptive, personalised and context-aware interaction in a smart learning environment: piloting the iCollab system'
+  where: Melbourne Learning Analytics Summit
+  place: melbourne
+- year: 2018
+  month: Dec
+  type: Writing
+  label: Article
+  title: How does learning happen in museums?
+  where: Pursuit, University of Melbourne, with Paula de Barba
+  url: https://pursuit.unimelb.edu.au/articles/how-does-learning-happen-in-museums
+- year: null
+  type: In the media
+  label: In the media
+  title: Research shaping the future of GenAI capability building in higher education
+  where: Education Melbourne, University of Melbourne
+  url: https://about.unimelb.edu.au/education-melbourne/our-people-in-action/research-shaping-the-future-of-genai-capability-building-in-higher-education
+- year: null
+  type: In the media
+  label: In the media
+  title: Building GenAI capability across the University
+  where: Education Melbourne, University of Melbourne
+  url: https://about.unimelb.edu.au/education-melbourne/our-people-in-action/building-genai-capability-across-the-university
+- year: 2024
+  type: University seminar
+  label: Panel
+  title: AI literacy, employment and universities
+  where: 'Melbourne CSHE Teaching and Learning Summit 2024: Artificial Intelligence and the Future of Higher Education'
+  place: melbourne
+  url: https://melbourne-cshe.unimelb.edu.au/events/past-events/teaching-and-learning-conference-and-summit/t-and-l-summit-2024

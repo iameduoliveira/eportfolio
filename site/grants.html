@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grants – Dr Eduardo Oliveira</title>
+<meta name="description" content="Research and teaching grants held by Dr Eduardo Oliveira.">
+<meta property="og:title" content="Grants – Dr Eduardo Oliveira">
+<meta property="og:description" content="Research and teaching grants held by Dr Eduardo Oliveira.">
+<meta property="og:image" content="assets/img/eduardo-oliveira.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Eduardo Oliveira</a>
+<nav class="nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="grants.html" aria-current="page">Grants</a>
+<a href="awards.html">Awards</a>
+<a href="teaching.html">Teaching</a>
+<a href="talks.html">Talks &amp; writing</a>
+</nav>
+<div class="a11y" role="group" aria-label="Display options">
+<button type="button" id="a-minus" aria-label="Smaller text">A−</button>
+<button type="button" id="a-plus" aria-label="Larger text" style="font-weight:600">A+</button>
+<button type="button" id="a-contrast" aria-pressed="false">High contrast</button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap">
+<h1 class="page-title">Grants</h1>
+<p class="lede">Competitive funding for research and teaching innovation since 2017, from university schemes to national and international funders.</p>
+<div class="chips" role="group" aria-label="Filter grants">
+<span id="src-chips" style="display:contents"></span>
+<span style="flex:1 1 auto"></span>
+<span style="display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap"><label for="f-role" style="font-size:.85rem;font-weight:600">My role</label>
+<select id="f-role" style="width:auto"><option value="all">All roles</option><option>Lead</option><option>Chief Investigator</option><option>Co-investigator</option></select></span>
+</div>
+<section class="stats" aria-labelledby="g-kpi"><h2 id="g-kpi" class="vh">At a glance</h2><div class="stats-grid" id="kpis"></div></section>
+<div class="row section">
+<section class="grow3" aria-labelledby="tl-title" style="flex-basis:600px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem">
+<h2 id="tl-title" class="h2">Projects over time</h2>
+<div class="legend" style="margin:0">
+<span><span class="sw role-lead" style="width:18px;height:10px"></span>Lead</span>
+<span><span class="sw role-ci" style="width:18px;height:10px"></span>Chief Investigator</span>
+<span><span class="sw role-coi" style="width:18px;height:10px"></span>Co-investigator</span>
+</div>
+</div>
+<p class="section-intro" style="margin:.5rem 0 .8rem">Each bar runs from the first to the last funded year. Select a project for details.</p>
+<div class="panel" style="padding:.6rem .8rem .4rem">
+<div aria-hidden="true" class="axis-x" style="margin-left:38%;margin-top:0;margin-bottom:.3rem" id="tl-axis"></div>
+<ol class="list timeline" id="timeline" style="border-top:none"></ol>
+<p aria-hidden="true" class="small muted" style="margin:.4rem 0 0;text-align:right">Dashed line: today</p>
+</div>
+</section>
+<aside class="grow1" aria-labelledby="det-title">
+<h2 id="det-title" class="h2" style="margin-bottom:.8rem">Project details</h2>
+<div id="details"></div>
+<h3 style="margin:2rem 0 .7rem;font-size:.95rem">Funding by source</h3>
+<ul style="list-style:none;margin:0;padding:0" id="by-source"></ul>
+</aside>
+</div>
+<section aria-labelledby="list-title">
+<h2 id="list-title" style="margin:0 0 .2rem;font-size:1.6rem">All grants</h2>
+<p aria-live="polite" class="muted" style="margin:0 0 1rem;font-size:.92rem" id="list-summary"></p>
+<div id="grant-list"></div>
+<p class="small muted" style="margin-top:2.5rem;max-width:52rem">Amounts are the total awarded to each project. Totals are in Australian dollars; grants in other currencies are converted or shown separately.</p>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>I acknowledge the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, the Traditional Owners of the land on which I live and work, and pay my respects to their Elders past and present.</p>
+<div class="links">
+<a href="accessibility.html">Accessibility</a>
+<span>© <span id="year">2026</span> Eduardo Oliveira</span>
+</div>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/grants.js"></script>
+</body>
+</html>

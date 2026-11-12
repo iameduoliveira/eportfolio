@@ -1,0 +1,415 @@
+# themes.yaml — research themes and topics on the Research and Home pages.
+#
+# themes:   the six themes. `keywords` is a regular expression matched against each paper's title
+#           (lower case); a paper can belong to several themes.
+# topics:   the words in the "Topics I research" cloud (title keywords, plus OpenAlex keywords via `openalex_keywords`).
+# papers:   your corrections. Each paper's `themes` list here WINS over the keywords. Papers are matched by title.
+#           New papers from Google Scholar are tagged automatically; add them here only to correct them.
+#           Marked # CHECK: papers that need your eye (health papers under AI; papers with no theme).
+
+themes:
+- code: ai
+  label: AI in education
+  long_label: AI in education
+  description: Generative AI, LLM-powered feedback, personalisation and AI literacy at scale.
+  keywords: generative|genai|gen ai|\bllms?\b|large language|chatgpt|artificial intelligence|\bai\b|fine-tun|personali[sz]|intelligen|inteligen|i-collaboration|chatbot|agent|machine learning|aprendizado de m|adaptive|predict|context-aware|cleverpal|recommend|explainable
+- code: la
+  label: Learning analytics & SRL
+  long_label: Learning analytics & self-regulated learning
+  description: How tertiary students learn independently, and how and when to support them.
+  keywords: learning analytics|self-regulat|\bsrl\b|trace|network analysis|transition network|online learning|learning patterns|engagement|dashboard|predict|rubric|dynamics
+- code: se
+  label: Software engineering education
+  long_label: Software engineering education
+  description: Requirements, code review, capstone projects and programming with AI.
+  keywords: software|programming|\bcode\b|code review|vibe coding|requirements|capstone|user stor|internship|computing education|engineering education
+- code: hai
+  label: Human–AI collaboration
+  long_label: Human–AI collaboration
+  description: Student agency, help-seeking and hybrid intelligence when people and AI work together.
+  keywords: human-ai|human–ai|hybrid intelligence|student-ai|student–ai|agency|help-seeking|co-design|human and llm|interaction|learning partner|ai collaboration
+- code: sty
+  label: Stylometry & integrity
+  long_label: Stylometry & academic integrity
+  description: Authorship verification, writing under pressure and evidence of AI use.
+  keywords: stylometr|authorship|writing|plagiari|integrity|essay|cheating
+- code: sle
+  label: Smart learning environments
+  long_label: Smart learning environments
+  description: Intelligent, collaborative and context-aware learning spaces, from i-collaboration to smart campuses.
+  keywords: i-collaboration|collaborative|smart|virtual learning|distance education|mooc|f[óo]rum|middleware|context-aware health|cleverpal|hackspace|honeypot|learning spaces|ambientes|health devices
+topics:
+- label: Online learning
+  keywords: online|mooc|distance education|\bead\b
+- label: Generative AI
+  keywords: generative|genai|gen ai
+- label: Collaborative learning
+  keywords: i-collaboration|collaborative|colabora
+- label: Software engineering education
+  keywords: software engineering|software project|software design
+- label: Large language models
+  keywords: \bllms?\b|large language
+- label: Academic writing
+  keywords: writing
+- label: Smart learning environments
+  keywords: smart|context-aware
+- label: Self-regulated learning
+  keywords: self-regulat|\bsrl\b
+- label: Personalisation
+  keywords: personali[sz]
+- label: Higher education
+  keywords: higher education|universit|tertiary
+- label: Virtual learning spaces
+  keywords: virtual learning|learning spaces|ambientes
+- label: Human–AI collaboration
+  keywords: human-ai|human–ai|student-ai|student–ai|ai collaboration|human and llm
+- label: Health technologies
+  keywords: health|telecardiology|fitness|medicin
+- label: Authorship verification
+  keywords: authorship
+- label: Assessment
+  keywords: assessment|exam|assuring
+- label: Programming
+  keywords: programming|coding
+- label: Feedback
+  keywords: feedback
+- label: Explainable AI
+  keywords: explainable|\bxai\b
+- label: Student engagement
+  keywords: engagement
+- label: Requirements engineering
+  keywords: requirements|user stor
+- label: Prediction
+  keywords: predict|forecast
+- label: Network analysis
+  keywords: network analysis|co-occurrence network|networks
+- label: Code review
+  keywords: code review
+- label: Academic integrity
+  keywords: integrity|cheating|misconduct
+- label: Transition network analysis
+  keywords: transition network|\btna\b
+- label: Stylometry
+  keywords: stylometr
+- label: Qualitative coding
+  keywords: qualitative|coding of
+- label: Public interactive systems
+  keywords: honeypot|public interactive|digital ecosystems
+- label: Problem-based learning
+  keywords: problem-based|project-based|internship
+- label: Middleware
+  keywords: middleware
+- label: Learning analytics
+  keywords: learning analytics
+- label: Fine-tuning
+  keywords: fine-tun
+- label: Cognitive load
+  keywords: cognitive load|stress|pressure
+- label: AI literacy
+  keywords: ai literacy|literacy
+- label: Student agency
+  keywords: agency
+- label: Hybrid intelligence
+  keywords: hybrid intelligence
+- label: Help-seeking
+  keywords: help-seeking
+openalex_keywords:
+  Large language models: Large language models
+  Generative AI: Generative AI
+  Generative AI in education: Generative AI
+  Learning analytics: Learning analytics
+  Self-regulated learning: Self-regulated learning
+  Student self-regulation: Self-regulated learning
+  Software engineering education: Software engineering education
+  Software engineering students: Software engineering education
+  Programming education: Programming
+  Online learning: Online learning
+  Virtual learning environments: Virtual learning spaces
+  Human-AI collaboration: Human–AI collaboration
+  Academic integrity: Academic integrity
+  Agency: Student agency
+  Artificial intelligence in education: Generative AI
+  Higher education: Higher education
+  University students: Higher education
+  Engineering education: Engineering education
+  Student engagement: Student engagement
+  Student motivation: Student motivation
+  Student feedback: Feedback
+  Formative feedback: Feedback
+  Scaffolding: Scaffolding
+  Cognitive offloading: Cognitive offloading
+  Authentic learning: Authentic learning
+  Learning strategies: Learning strategies
+  ChatGPT: ChatGPT
+  AI literacy: AI literacy
+  Assessment design: Assessment
+  Student assessment: Assessment
+  Co-design: Co-design
+  Personas: Personas
+  Responsible AI use: Responsible AI
+  Computing education: Programming
+  Active learning: Active learning
+  Professional skills: Professional skills
+
+papers:
+  - title: "AI collaboration or cheating? Using explainable authorship verification to measure AI assistance in academic writing"
+    year: 2026
+    themes: [ai, hai, sty]
+  - title: "AI-Assisted Code Review as a Scaffold for Code Quality and Self-Regulated Learning: An Experience Report"
+    year: 2026
+    themes: [ai, la, se]
+  - title: "Assuring quality learning in a gen AI-integrated future: The role of adaptive capabilities"
+    year: 2026
+    themes: [ai]
+  - title: "Blockchain-Based Data Sharing for National Statistics Offices: A Survey and Privacy Governance Evaluated with the Five Safes Framework"
+    year: 2026
+    themes: []  # CHECK: no theme matched
+  - title: "Can AI deliver appropriate support for diverse student profiles?: A large-scale evaluation"
+    year: 2026
+    themes: [ai]
+  - title: "Comparing human and LLM ordered coding of qualitative data: How coding differences cascade through temporal analysis"
+    year: 2026
+    themes: [ai, hai]
+  - title: "Fine-tuning Large Language Models for Educational Applications: Use Cases, Architectures, and Techniques"
+    year: 2026
+    themes: [ai]
+  - title: "From Writing Traces to Personalised Support: Guiding LLMs with Stylometric Fingerprints"
+    year: 2026
+    themes: [ai, la, sty]
+  - title: "GenAI as a learning partner: Supporting self-regulated learning over time without replacing effort"
+    year: 2026
+    themes: [ai, la, hai]
+  - title: "Hybrid intelligence in requirements education: Preserving student agency in refining user stories with generative AI"
+    year: 2026
+    themes: [ai, se, hai]
+  - title: "Modeling Dynamics of Learning and Learners with the Transition Network Analysis Toolkit"
+    year: 2026
+    themes: [la]
+  - title: "Modeling observation lens in co-occurrence network analysis: Four window approaches and implementations"
+    year: 2026
+    themes: [la]
+  - title: "Modeling the Dynamics and Impact of Human-AI Interactions with Attention Transition Network Analysis"
+    year: 2026
+    themes: [ai, la, hai]
+  - title: "Ordering Bias and Ordering Variability: A Three-Step Approach for Interrater Reliability in Ordered Qualitative Coding"
+    year: 2026
+    themes: []  # CHECK: no theme matched
+  - title: "Predicting the Finish Before the Draft Ends: Continuous Forecasting of Writing Performance from Process Traces"
+    year: 2026
+    themes: [ai, la, sty]
+  - title: "Profiling Writing Skills at Scale: A Hybrid Stylometry-LLM Pipeline for Formative Feedback"
+    year: 2026
+    themes: [ai, sty]
+  - title: "The GenAI Skill Bypass: Mapping Divergent Pathways of University Students and Staff AI Literacy"
+    year: 2026
+    themes: [ai]
+  - title: "Unpacking Vibe Coding: Help-Seeking Processes in Student-AI Interactions While Programming"
+    year: 2026
+    themes: [ai, se, hai]
+  - title: "AI, Explainable AI and Evaluative AI: Informed Data-Driven Decision-Making in Education"
+    year: 2025
+    themes: [ai]
+  - title: "An Introduction to Large Language Models in Education"
+    year: 2025
+    themes: [ai]
+  - title: "Co-Designing AI Tools for Inclusive Online Environments"
+    year: 2025
+    themes: [ai, hai]
+  - title: "Delving into the psychology of machines: Exploring the structure of self-regulated learning via LLM-generated survey responses"
+    year: 2025
+    themes: [ai, la]
+  - title: "Development and validation of a learning analytics rubric for self-regulated learning"
+    year: 2025
+    themes: [la]
+  - title: "Enhancing Essay Cohesion Assessment: A Novel Item Response Theory Approach"
+    year: 2025
+    themes: [sty]
+  - title: "Exploring human-ai collaboration in educational contexts: Insights from writing analytics and authorship attribution"
+    year: 2025
+    themes: [ai, hai, sty]
+  - title: "Facets of AI personalization: A systematic review of fine-tuned large language models for teaching and learning"
+    year: 2025
+    themes: [ai]
+  - title: "From enhancement to transformation: AI pedagogy through mindset, specialised training, and structured support"
+    year: 2025
+    themes: [ai]
+  - title: "Investigating validity and generalisability in trace-based measurement of self-regulated learning: A multidisciplinary study"
+    year: 2025
+    themes: [la]
+  - title: "Large teams, authentic problems: A case study of GenAI educational tool development in software engineering"
+    year: 2025
+    themes: [ai, se]
+  - title: "LLMs for Explainable Artificial Intelligence: Automating Natural Language Explanations of Predictive Analytics Models"
+    year: 2025
+    themes: [ai, la]
+  - title: "Scaffolding GenAI literacy and fluency at scale: A practical self-assessment framework for personalised learning"
+    year: 2025
+    themes: [ai]
+  - title: "The AI Ally Project: Designing a human-centred AI tool for women's safety in online spaces"
+    year: 2025
+    themes: [ai]
+  - title: "The dynamics of the self-regulation process in student-AI interactions: The case of problem-solving in programming education"
+    year: 2025
+    themes: [ai, la, se, hai]
+  - title: "A Case Study on University Student Online Learning Patterns Across Multidisciplinary"
+    year: 2024
+    themes: [la]
+  - title: "A case study on university student online learning patterns across multidisciplinary subjects"
+    year: 2024
+    themes: [la]
+  - title: "Combinaçao de Modelos de Aprendizado de Máquina utilizando Teoria de Resposta ao Item para Avaliaçao de Coesao Textual em Redaçoes no contexto do ENEM"
+    year: 2024
+    themes: [ai]
+  - title: "Digital Environment and AI in International Education: The Gaps and Implications"
+    year: 2024
+    themes: [ai]
+  - title: "Do beliefs about intelligence drive engagement in online learning? Exploring the impact of growth and fixed mindsets"
+    year: 2024
+    themes: [ai, la]
+  - title: "ENHANCED DATA PATHWAYS FOR AI-DRIVEN LEARNING ANALYTICS AND PERSONALISED STUDENT FEEDBACK"
+    year: 2024
+    themes: [ai, la]
+  - title: "Enhancing automated peer code reviews in software engineering education with context-aware generative AI"
+    year: 2024
+    themes: [ai, se]
+  - title: "From campus to career: leveraging technology to improve work readiness and industry engagement"
+    year: 2024
+    themes: [la]
+  - title: "Learning with style: Improving student code-style through better automated feedback"
+    year: 2024
+    themes: [se]
+  - title: "The establishment and piloting of an AI driven online professional development and feedback program"
+    year: 2024
+    themes: [ai]
+  - title: "Towards explainable authorship verification: an approach to minimise academic misconduct in higher education"
+    year: 2024
+    themes: [ai, sty]
+  - title: "A Tool for Learning: Classroom Use-cases for Generative AI"
+    year: 2023
+    themes: [ai]
+  - title: "AI-powered peer review process: An approach to enhance computer science students’ engagement with code review in industry-based subjects"
+    year: 2023
+    themes: [ai, la, se]
+  - title: "Authorship Verification in software engineering education: Forget ChatGPT and focus on students' academic writing profiles"
+    year: 2023
+    themes: [ai, se, sty]
+  - title: "Creating a software application to help university educators to reflect on the cognitive complexity of their exam questions, using Bloom’s Taxonomy and automated classification"
+    year: 2023
+    themes: [se]
+  - title: "More than the sum of its parts: reflections on a networked program supporting curriculum innovation at a research-intensive university"
+    year: 2023
+    themes: []  # CHECK: no theme matched
+  - title: "Open-book and Open-AI Mindset: Strategies to Redesign Final Exams in Response to Generative AI and the Potential for Academic Misconduct"
+    year: 2023
+    themes: [ai]
+  - title: "University learning partnerships: Enhancing learning, enabling innovation and addressing challenges in schools"
+    year: 2023
+    themes: [hai]
+  - title: "Use of emotional goals by software engineering students"
+    year: 2023
+    themes: [se]
+  - title: "Using Motivational Models to Promote Emotional Goals Among Software Engineering Students"
+    year: 2023
+    themes: [se]
+  - title: "Redesigning Software Architecture and Design Curriculum to Promote Professional Skills Among Software Engineering Students: An Experience Report"
+    year: 2022
+    themes: [se]
+  - title: "Research profiles of Australian computing education authors: A scientometric analysis"
+    year: 2022
+    themes: [se]
+  - title: "Same graph, different data: A usability study of a student-facing dashboard based on self-regulated learning theory"
+    year: 2022
+    themes: [la]
+  - title: "The impact of cognitive load on students’ academic writing: an authorship verification investigation"
+    year: 2022
+    themes: [sty]
+  - title: "Development of an online teaching-focused professional development program for junior teaching staff"
+    year: 2021
+    themes: []  # CHECK: no theme matched
+  - title: "Enabling adaptive, personalised and context-aware interaction in a smart learning environment: Piloting the iCollab system"
+    year: 2021
+    themes: [ai, hai, sle]
+  - title: "Motivational models for validating agile requirements in Software Engineering subjects"
+    year: 2021
+    themes: [se]
+  - title: "Transitioning from motivational goal models to user stories within user-centred software design."
+    year: 2021
+    themes: [se]
+  - title: "The importance and meaning of session behaviour in a MOOC"
+    year: 2020
+    themes: [sle]
+  - title: "Writing analytics across essay tasks with different cognitive load demands"
+    year: 2020
+    themes: [sty]
+  - title: "How does learning happen in museums?"
+    year: 2018
+    themes: []  # CHECK: no theme matched
+  - title: "Understanding reflective learning experiences in museums"
+    year: 2018
+    themes: []  # CHECK: no theme matched
+  - title: "Hackspace: a platform for designing and promoting customised interactions in digital ecosystems"
+    year: 2016
+    themes: [hai, sle]
+  - title: "Uncovering the Honeypot Effect: How Audiences Engage with Public Interactive Systems"
+    year: 2016
+    themes: [sle]
+  - title: "Device nimbus: an intelligent middleware for smarter services for health and fitness"
+    year: 2015
+    themes: [ai, sle]  # CHECK: health, not education — keep under ai?
+  - title: "Distributed and heterogeneous data analysis for smart urban planning"
+    year: 2015
+    themes: [sle]
+  - title: "Towards a middleware for context-aware health monitoring"
+    year: 2015
+    themes: [ai, sle]  # CHECK: health, not education — keep under ai?
+  - title: "Um Survey sobre Plataformas de Mediação de Dados para Internet das Coisas"
+    year: 2015
+    themes: []  # CHECK: no theme matched
+  - title: "Digital and collaborative technologies for smarter distance education"
+    year: 2014
+    themes: [sle]
+  - title: "HSPY: an intelligent framework for context and predictive analysis for smarter health devices"
+    year: 2014
+    themes: [ai, la, sle]  # CHECK: health, not education — keep under ai?
+  - title: "i-collaboration 3.0: um framework de apoio ao desenvolvimento de Ambientes Distribuídos de Aprendizagem Sensíveis ao Contexto"
+    year: 2013
+    themes: [ai, sle]
+  - title: "i-collaboration 3.0: um framework de apoio ao desenvolvimento de ambientes distribuídos de aprendizagem sensíveis ao contexto. 2013. 158f"
+    year: 2013
+    themes: [ai, sle]
+  - title: "BADA INTERNSHIP: DEVELOPING LEARNERS SKILLS THROUGH PROBLEM-BASED LEARNING AND AGILE METHODS WITHIN A WORK ENVIRONMENT"
+    year: 2012
+    themes: [se]
+  - title: "Creating personalized and distributed virtual learning spaces through the use of i-collaboration 3.0"
+    year: 2012
+    themes: [ai, sle]
+  - title: "I-Collaboration 3.0: A Model to Support the Creation of Virtual Learning Spaces"
+    year: 2012
+    themes: [ai, sle]
+  - title: "Widgets internship: developing learners skills in a user-centered development process"
+    year: 2011
+    themes: [se]
+  - title: "Processos Colaborativos e Tecnologias da Informação Aplicados ao Ensino de Medicina"
+    year: 2010
+    themes: []  # CHECK: no theme matched
+  - title: "Um protótipo inovador para fórum de discussão em ambientes virtuais de aprendizagem"
+    year: 2010
+    themes: [sle]
+  - title: "ForUX: um modelo de fórum de discussão para representações fidedignas de idéias"
+    year: 2009
+    themes: [sle]
+  - title: "i-Collaboration in Practice: Results from our Investigation within the Cleverpal Environment"
+    year: 2009
+    themes: [ai, sle]
+  - title: "Putting the Intelligent Collaboration Model in practice within the Cleverpal Environment"
+    year: 2009
+    themes: [ai, sle]
+  - title: "i-collaboration: Um modelo de colaboração inteligente personalizada para ambientes de EAD"
+    year: 2008
+    themes: [ai, sle]
+  - title: "Collaborative environments for telecardiology"
+    year: 2003
+    themes: [sle]  # CHECK: health, not education — keep under ai?
+  - title: "PROCESSOS DE ENSINO/APRENDIZAGEM"
+    year: null
+    themes: []  # CHECK: no theme matched

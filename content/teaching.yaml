@@ -1,0 +1,136 @@
+# teaching.yaml — the Teaching page.
+# subjects: list the years you coordinated each subject, and the years you were on the teaching team.
+# awards:   teaching awards shown above the years in the grid (year: name).
+
+subjects:
+- code: SWEN90007
+  name: Software Design and Architecture
+  coordinator:
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  - 2026
+  teaching_team: []
+- code: COMP90082
+  name: Software Project
+  coordinator:
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  - 2026
+  teaching_team:
+  - 2020
+  - 2021
+  note: Industry-based capstone
+- code: SWEN90009
+  name: Software Requirements Analysis
+  coordinator:
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+  - 2022
+  teaching_team:
+  - 2023
+  - 2024
+- code: SWEN90013
+  name: Masters Advanced Software Project
+  coordinator: []
+  teaching_team:
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+- code: SWEN90014
+  name: Masters Software Engineering Project
+  coordinator: []
+  teaching_team:
+  - 2017
+  - 2018
+  - 2021
+- code: INFO30005
+  name: Web Information Technologies
+  coordinator: []
+  teaching_team:
+  - 2017
+  - 2018
+  - 2019
+- code: SWEN30006
+  name: Software Modelling and Design
+  coordinator: []
+  teaching_team:
+  - 2017
+- code: COMP90076
+  name: Social Analytics
+  coordinator: []
+  teaching_team:
+  - 2020
+  note: Designed as a fully online subject
+- code: MicroCert
+  name: Goal-oriented Software and Service Design
+  coordinator:
+  - 2022
+  teaching_team: []
+  note: Microcredential co-designed and delivered with Prof. Leon Sterling
+awards:
+  2017: CIS Excellence Award in Tutoring
+  2021: CIS Excellence Award in Teaching and Learning
+  2022: FEIT Kelvin Medal
+  2023: Edward Brown Award for Teaching Excellence
+  2024: GEM Scott Teaching Fellowship
+  2025: Senior Fellow of the Higher Education Academy
+supervision:
+- number: '7'
+  text: PhD candidates co-supervised (principal supervisor for 2), in learning analytics, generative AI in education, LLMs for feedback and social media addiction
+- number: 50+
+  text: Master's capstone students supervised (2018–2024)
+- number: 20+
+  text: Master's coursework research projects, mostly AI in education and software engineering practice
+leadership:
+- years: 2026–
+  role: Interim Assistant Director of Education, School of Computing and Information Systems
+- years: 2026–
+  role: Member, Teaching and Learning Quality Assurance Committee (TALQAC)
+- years: 2025–
+  role: FEIT Assistant Dean (Diversity and Inclusion)
+- years: 2023–
+  role: CIS Student Engagement Coordinator
+- years: 2022–
+  role: Member, FEIT Education Committee
+- years: 2022–24
+  role: FEIT FlexAP Education Innovation Fellow
+- years: 2021–
+  role: Member, CIS Education Committee and Teaching and Learning Lab
+- years: 2019–22
+  role: Program Coordinator, Master of Information Technology (Distributed Computing)
+beyond:
+- year: 2024–25
+  title: Introduction to GenAI
+  text: 'Workshop series for staff, designed with the Provost''s executive team: 20+ sessions at the FEIT Teaching and Learning Lab and 30 more across faculties. I led the design; delivered with Shannon Rios and Cory Dal Ponte.'
+- year: '2025'
+  title: GenAI Cheating Lab
+  text: 'Workshop series on assessment and generative AI: 4 sessions at the Teaching and Learning Lab and 6 across faculties.'
+- year: '2025'
+  title: Practical uses of GenAI for educators
+  text: AI literacy program for staff, part of my GEM Scott Teaching Fellowship.
+- year: '2026'
+  title: Melbourne Graduate Researcher Certificate
+  text: 'Designed and delivered “Mastering Efficiency and Control in AI Research: The Agentic Scholar” (June) and “AI in Research Leadership” (October).'
+- year: '2026'
+  title: Leading Excellence in Learning
+  text: “Strengthening 21st Century Skills” module for educators in India, with the Faculty of Education.
+qualifications:
+- year: '2025'
+  title: Senior Fellow of the Higher Education Academy (Advance HE)
+- year: '2020'
+  title: Graduate Certificate in University Teaching, University of Melbourne
+- year: '2017'
+  title: Melbourne Teaching Certificate, University of Melbourne
+earlier: 'Earlier: Master Design Studio at the Melbourne School of Design (2014).'

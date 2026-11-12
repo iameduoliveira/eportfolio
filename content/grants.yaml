@@ -1,0 +1,267 @@
+# grants.yaml — every grant on the Grants page, newest first.
+#   source: University of Melbourne | Australian Government | International | Industry
+#   role:   Lead | Chief Investigator | Co-investigator
+#   aud:    amount in Australian dollars used for totals (0 if paid in another currency; use usd: for US dollars)
+#   amount: the text shown on the page
+#   note:   things to confirm (not shown on the site)
+
+grants:
+- title: 'An investigation of argumentation in university academic writing compared to TOEFL iBT written academic discussion task responses: using LLMs to support an expanded writing construct'
+  funder: TOEFL® Committee of Examiners (COE)
+  source: International
+  start: 2026
+  end: 2027
+  amount: US$100,000
+  aud: 0
+  usd: 100000
+  role: Co-investigator
+  team:
+  - Kellie Frost
+  - Jason Fan
+  - Eduardo Oliveira
+  - Hannah Kim
+  - Sisilia Halimi
+  note: 'Years: your CV says 2026–27, your old site says 2026–28.'
+- title: '''In-Sight'': a personalised learning dashboard to make learning visible'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2026
+  end: 2027
+  amount: A$30,000
+  aud: 30000
+  role: Co-investigator
+  team: []
+  note: Investigators needed (on old site only).
+- title: 'Teaching code in the GenAI era: a shared, cross-faculty delivery model'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2026
+  end: 2027
+  amount: A$30,000
+  aud: 30000
+  role: Co-investigator
+  team: []
+  note: Investigators needed (on old site only).
+- title: Developing a speaking test for the Diagnostic English Language Assessment (DELA)
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2026
+  end: 2027
+  amount: A$30,000
+  aud: 30000
+  role: Co-investigator
+  team:
+  - Ute Knoch
+  - Eduardo Oliveira
+  - Gabriele Marini
+  note: 'Years: CV says 2026–27, old site says 2025–26.'
+- title: 'The Great Escape: digital health escape room simulations'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2026
+  end: 2027
+  amount: A$29,768
+  aud: 29768
+  role: Co-investigator
+  team:
+  - Sat Dushyanthen
+  - Kit Huckvale
+  - Tina Brock
+  - Vivienne Mak
+  - Eduardo Oliveira
+  - Shaz Sivanesan
+  - Teresa O'Brien
+  - Hasan Ferdous
+  - Gary Wong
+  - Meg Perrier
+  - Mark Christopoulos
+  - Kristi Milley
+  note: 'Years: CV says 2026–27, old site says 2025–26.'
+- title: 'Development and evaluation of digital technologies for the promotion of healthy lifestyles in early childhood within Primary Health Care in Brazil: a Brazil–Australia research collaboration'
+  funder: CNPq (Brazilian National Council for Scientific and Technological Development), ConhecBrasil-REDES
+  source: International
+  start: 2025
+  end: 2026
+  amount: R$290,000 (about A$85,000)
+  aud: 85000
+  role: Chief Investigator
+  team:
+  - Andreia Morales Cascaes
+  - Ana Lúcia Schaefer Ferreira de Mello
+  - André Luiz Sens
+  - Mauricio Dick
+  - Juliana dos Santos Vaz
+  - Aluísio J. D. Barros
+  - Priscila Machado
+  - Rachel Laws
+  - Eduardo Oliveira
+- title: 'AI Ally: co-designing anti-harassment AI with girls and young women'
+  funder: eSafety Commissioner
+  source: Australian Government
+  start: 2024
+  end: 2025
+  amount: A$243,017
+  aud: 243017
+  role: Chief Investigator
+  team:
+  - Mahli-Ann Butt
+  - Lucy Sparrow
+  - Eduardo Oliveira
+  related: FEIT Excellence Award in Interdisciplinary Research (2026); The Conversation article
+- title: 'Fostering AI literacy at scale: empowering university students and staff for the digital future'
+  funder: GEM Scott Teaching Fellowship, University of Melbourne
+  source: University of Melbourne
+  start: 2024
+  end: 2025
+  amount: A$68,838
+  aud: 68838
+  role: Lead
+  team:
+  - Eduardo Oliveira
+- title: 'Transforming problems into app prototypes: Healthcare Hack'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2023
+  end: 2024
+  amount: A$34,814
+  aud: 34814
+  role: Chief Investigator
+  team:
+  - Kayley Lyons
+  - Eduardo Oliveira
+  - Joanne Bolton
+  - Sathana Dushyanthen
+  - Andreia Bruno-Tome
+- title: 'Student Wrap-up: increasing student engagement with participation feedback and guided reflection'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2023
+  end: 2024
+  amount: A$23,850
+  aud: 23850
+  role: Chief Investigator
+  team:
+  - Andrew Cutting
+  - Sarah Frankland
+  - Eduardo Oliveira
+- title: IntelliJourney
+  funder: InnovatEd, University of Melbourne
+  source: University of Melbourne
+  start: 2023
+  end: 2023
+  amount: A$25,000
+  aud: 25000
+  role: Lead
+  team:
+  - Eduardo Oliveira
+  - Paula de Barba
+  note: 'Years: CV says 2023, old site says 2022–23.'
+- title: Bloom's Taxonomy and automated classification
+  funder: Teaching and Learning Lab, University of Melbourne
+  source: University of Melbourne
+  start: 2022
+  end: 2023
+  amount: A$25,000
+  aud: 25000
+  role: Co-investigator
+  team:
+  - Eduardo Oliveira
+  - Andrew Valentine
+  related: Best Concise Paper, ASCILITE 2023
+  related_url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=WxcwAEIAAAAJ:vDijr-p_gm4C
+- title: 'Positive Behaviour Support: a collaborative approach to delivering best practice'
+  funder: NDIS Commonwealth Standard Grant (University of Melbourne, Flinders University, University of Queensland)
+  source: Australian Government
+  start: 2021
+  end: 2023
+  amount: A$1.2 million
+  aud: 1200000
+  role: Chief Investigator
+  team:
+  - Keith McVilly
+  - Michael Kirley
+  - Eduardo Oliveira
+  related: Featured in The Guardian (2024)
+- title: 'Employability skills: closing the gap between academia and industry through personalised student journey maps'
+  funder: Learning and Teaching Initiatives, University of Melbourne
+  source: University of Melbourne
+  start: 2021
+  end: 2021
+  amount: A$30,000
+  aud: 30000
+  role: Lead
+  team:
+  - Eduardo Oliveira
+  - Antonette Mendoza
+  - Sandra Milligan
+  - Paula de Barba
+  - Pauline Thompson
+  - Narelle English
+  note: 'Years: CV says 2021, old site says 2020–21.'
+- title: '[Project title needed]'
+  funder: Google CS Educator PD
+  source: Industry
+  start: 2020
+  end: 2020
+  amount: A$10,000
+  aud: 10000
+  role: Co-investigator
+  team:
+  - Eduardo Oliveira
+  - Kylie McColl
+  note: Title needed (on old site only).
+- title: '[Project title needed]'
+  funder: Google CS Educator PD
+  source: Industry
+  start: 2019
+  end: 2019
+  amount: A$10,000
+  aud: 10000
+  role: Co-investigator
+  team:
+  - Eduardo Oliveira
+  - Kylie McColl
+  note: Title needed (on old site only).
+- title: '[Project title needed]'
+  funder: Google CS Educator PD
+  source: Industry
+  start: 2018
+  end: 2018
+  amount: A$10,000
+  aud: 10000
+  role: Co-investigator
+  team:
+  - Eduardo Oliveira
+  - Kylie McColl
+  - Andrew Turpin
+  note: Title needed (on old site only).
+- title: 'MyCampus: the University of Melbourne as a living lab'
+  funder: Melbourne Networked Society Institute (MNSI) seed funding
+  source: University of Melbourne
+  start: 2017
+  end: 2017
+  amount: A$40,000
+  aud: 40000
+  role: Chief Investigator
+  team:
+  - Tom Kvan
+  - Fernando Koch
+  - Michael Kirley
+  - Jan Dethlefs
+  - Eduardo Oliveira
+- title: 'Learning reflections: designing interventions to promote learning in museums'
+  funder: McCoy Project (University of Melbourne and Museums Victoria)
+  source: University of Melbourne
+  start: 2017
+  end: 2017
+  amount: A$20,000
+  aud: 20000
+  role: Chief Investigator
+  team:
+  - Gregor Kennedy
+  - Cameron Hocking
+  - Eduardo Oliveira
+  - Paula de Barba
+  - Kristine Elliot
+  - Ben Cleveland
+  related: 'Pursuit article: How does learning happen in museums?'

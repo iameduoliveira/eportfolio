@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research – Dr Eduardo Oliveira</title>
+<meta name="description" content="Research and publications of Dr Eduardo Oliveira: themes, collaborators, topics and the full publication list.">
+<meta property="og:title" content="Research – Dr Eduardo Oliveira">
+<meta property="og:description" content="Research and publications of Dr Eduardo Oliveira: themes, collaborators, topics and the full publication list.">
+<meta property="og:image" content="assets/img/eduardo-oliveira.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Eduardo Oliveira</a>
+<nav class="nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="research.html" aria-current="page">Research</a>
+<a href="grants.html">Grants</a>
+<a href="awards.html">Awards</a>
+<a href="teaching.html">Teaching</a>
+<a href="talks.html">Talks &amp; writing</a>
+</nav>
+<div class="a11y" role="group" aria-label="Display options">
+<button type="button" id="a-minus" aria-label="Smaller text">A−</button>
+<button type="button" id="a-plus" aria-label="Larger text" style="font-weight:600">A+</button>
+<button type="button" id="a-contrast" aria-pressed="false">High contrast</button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap">
+<h1 class="page-title">Research</h1>
+<p class="lede">How my work has grown, who I work with, what I research and where it is published, with every publication at the end. Choose a theme to filter everything on this page.</p>
+<div class="chips" role="group" aria-label="Filter by research theme" id="theme-chips"></div>
+<section class="stats" aria-labelledby="kpi-title"><h2 id="kpi-title" class="vh">At a glance</h2><div class="stats-grid" id="kpis"></div><p class="stats-note" id="kpi-note"></p></section>
+<div class="row section">
+<section class="grow3" aria-labelledby="pubs-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem">
+<h2 id="pubs-title" class="h2">Publications per year since 2020, by type</h2>
+<button type="button" class="btn" id="table-toggle" aria-pressed="false">Show as table</button>
+</div>
+<div class="legend" id="type-legend"></div>
+<p class="readout" aria-live="polite" id="pubs-readout">Hover over a year to see its papers.</p>
+<div id="pubs-chart"></div>
+</section>
+<section class="grow2" aria-labelledby="cites-title">
+<h2 id="cites-title" class="h2">Citations per year since 2020</h2>
+<p class="section-intro" style="margin:.6rem 0 .4rem">All papers, Google Scholar. The lighter bar is this year so far.</p>
+<p class="readout" aria-live="polite" id="cites-readout">Hover over a year to see its citations.</p>
+<div id="cites-chart"></div>
+</section>
+</div>
+<section class="section" aria-labelledby="net-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:.8rem 1.5rem;margin-bottom:1.2rem">
+<div style="flex:1 1 480px;min-width:0">
+<h2 id="net-title" class="h2">Who I work with</h2>
+<p class="section-intro" style="margin:0" id="net-intro"></p>
+</div>
+<div style="display:flex;gap:.5rem"><button type="button" class="btn" id="net-play" aria-pressed="false" style="font-weight:600">▶ Play</button><button type="button" class="btn" id="net-shuffle">Rearrange</button></div>
+</div>
+<div class="row" style="gap:1.5rem">
+<div class="grow3 panel network-box" id="net-box">
+<span class="net-year" id="net-year" aria-live="polite"></span>
+<span class="tip" id="net-tip" hidden></span>
+<svg viewBox="0 0 800 520" role="img" aria-label="Interactive co-author network. The same people are listed as buttons beside it." id="net-svg"></svg>
+</div>
+<div class="grow1">
+<div id="net-sel"></div>
+<h3 style="margin:0 0 .5rem;font-size:.95rem">Frequent co-authors</h3>
+<ul class="list scroll-list" id="people"></ul>
+</div>
+</div>
+<div style="margin-top:1.4rem">
+<h3 style="margin:0 0 .6rem;font-size:.95rem">Collaborating institutions <span class="muted" style="font-weight:400">(papers written together, all years)</span></h3>
+<div style="display:flex;flex-wrap:wrap;gap:.5rem" id="insts"></div>
+</div>
+</section>
+<section class="section" aria-labelledby="topics-title">
+<h2 id="topics-title" class="h2">Topics I research</h2>
+<p class="section-intro" id="topics-intro">Larger words appear in more papers. Select a topic to list its papers below.</p>
+<div class="panel cloud" role="group" aria-label="Research topics" id="cloud"></div>
+</section>
+<section class="section" aria-labelledby="time-title">
+<h2 id="time-title" class="h2">My research over time</h2>
+<p class="section-intro">Papers in each theme, by period. Larger dots mean more papers; a paper can belong to more than one theme. Select a dot to list those papers below.</p>
+<p class="readout" aria-live="polite" id="time-readout">Hover over or select a dot.</p>
+<div class="panel" style="padding:.6rem 1rem;overflow-x:auto"><table class="dotgrid" id="dotgrid"><caption class="vh">Number of papers per research theme and period</caption></table></div>
+</section>
+<section id="publications" aria-labelledby="list-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;margin-bottom:.4rem">
+<h2 id="list-title" style="margin:0;font-size:1.6rem">Publications</h2>
+<p aria-live="polite" style="margin:0;font-weight:500;font-size:.95rem" id="list-summary"></p>
+</div>
+<p class="section-intro">All my publications from Google Scholar. The theme, topic and dot you choose above also filter this list.</p>
+<div class="filters">
+<div class="grid">
+<div style="grid-column:1/-1"><label class="field" for="q">Search titles, authors and venues</label><input id="q" type="search" placeholder="e.g. stylometry, Saqr, AIED"></div>
+<div><label class="field" for="f-type">Type</label><select id="f-type"><option value="all">All types</option><option>Journal</option><option>Conference</option><option>Book chapter</option><option>Preprint &amp; other</option></select></div>
+<div><label class="field" for="f-year">Year</label><select id="f-year"></select></div>
+<div><label class="field" for="f-sort">Sort by</label><select id="f-sort"><option value="new">Newest first</option><option value="cited">Most cited</option></select></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:.2rem 1.5rem;margin-top:.6rem">
+<label class="check"><input type="checkbox" id="f-ranked">Ranked venues only (CORE, Q1–Q2)</label>
+<label class="check"><input type="checkbox" id="f-award">Award-winning papers</label>
+<span style="flex:1 1 auto"></span>
+<span id="active-filters" style="display:flex;flex-wrap:wrap;gap:.5rem"></span>
+</div>
+</div>
+<div id="pub-list"></div>
+</section>
+<p class="small muted" style="margin-top:2.5rem;max-width:52rem" id="research-note"></p>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>I acknowledge the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, the Traditional Owners of the land on which I live and work, and pay my respects to their Elders past and present.</p>
+<div class="links">
+<a href="accessibility.html">Accessibility</a>
+<span>© <span id="year">2026</span> Eduardo Oliveira</span>
+</div>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/research.js"></script>
+</body>
+</html>

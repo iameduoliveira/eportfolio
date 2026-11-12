@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awards – Dr Eduardo Oliveira</title>
+<meta name="description" content="Research and teaching awards received by Dr Eduardo Oliveira.">
+<meta property="og:title" content="Awards – Dr Eduardo Oliveira">
+<meta property="og:description" content="Research and teaching awards received by Dr Eduardo Oliveira.">
+<meta property="og:image" content="assets/img/eduardo-oliveira.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Eduardo Oliveira</a>
+<nav class="nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="grants.html">Grants</a>
+<a href="awards.html" aria-current="page">Awards</a>
+<a href="teaching.html">Teaching</a>
+<a href="talks.html">Talks &amp; writing</a>
+</nav>
+<div class="a11y" role="group" aria-label="Display options">
+<button type="button" id="a-minus" aria-label="Smaller text">A−</button>
+<button type="button" id="a-plus" aria-label="Larger text" style="font-weight:600">A+</button>
+<button type="button" id="a-contrast" aria-pressed="false">High contrast</button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap" style="max-width:1040px">
+<h1 class="page-title">Awards</h1>
+<p class="lede">Recognition for research and for teaching, from my PhD in Brazil to international best paper awards.</p>
+<div class="chips" role="group" aria-label="Filter awards">
+<span id="type-chips" style="display:contents"></span>
+<span style="flex:1 1 auto"></span>
+<span style="display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap"><label for="f-level" style="font-size:.85rem;font-weight:600">Level</label>
+<select id="f-level" style="width:auto"></select></span>
+</div>
+<section class="stats" aria-labelledby="a-kpi"><h2 id="a-kpi" class="vh">At a glance</h2><div class="stats-grid" id="kpis"></div></section>
+<section class="section" aria-labelledby="strip-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem">
+<h2 id="strip-title" class="h2">Recognition over time</h2>
+<div class="legend" style="margin:0">
+<span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="var(--navy)"/></svg>Research</span>
+<span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="2" width="10" height="10" transform="rotate(45 7 7)" fill="var(--orange)"/></svg>Teaching</span>
+</div>
+</div>
+<p class="readout" aria-live="polite" id="strip-readout" style="margin-top:.5rem">Hover over or select a mark to see the award.</p>
+<div class="panel" style="padding:.8rem 1rem .4rem;overflow-x:auto"><div class="strip" id="strip"></div><div class="axis-x" aria-hidden="true" style="min-width:620px;gap:2px;font-size:.7rem" id="strip-axis"></div></div>
+</section>
+<section aria-labelledby="list-title">
+<h2 id="list-title" style="margin:0 0 .2rem;font-size:1.6rem">All awards</h2>
+<p aria-live="polite" class="muted" style="margin:0 0 1.2rem;font-size:.92rem" id="list-summary"></p>
+<div id="award-list"></div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>I acknowledge the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, the Traditional Owners of the land on which I live and work, and pay my respects to their Elders past and present.</p>
+<div class="links">
+<a href="accessibility.html">Accessibility</a>
+<span>© <span id="year">2026</span> Eduardo Oliveira</span>
+</div>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/awards.js"></script>
+</body>
+</html>

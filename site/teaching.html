@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teaching – Dr Eduardo Oliveira</title>
+<meta name="description" content="Teaching, supervision and education leadership of Dr Eduardo Oliveira at the University of Melbourne.">
+<meta property="og:title" content="Teaching – Dr Eduardo Oliveira">
+<meta property="og:description" content="Teaching, supervision and education leadership of Dr Eduardo Oliveira at the University of Melbourne.">
+<meta property="og:image" content="assets/img/eduardo-oliveira.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Eduardo Oliveira</a>
+<nav class="nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="grants.html">Grants</a>
+<a href="awards.html">Awards</a>
+<a href="teaching.html" aria-current="page">Teaching</a>
+<a href="talks.html">Talks &amp; writing</a>
+</nav>
+<div class="a11y" role="group" aria-label="Display options">
+<button type="button" id="a-minus" aria-label="Smaller text">A−</button>
+<button type="button" id="a-plus" aria-label="Larger text" style="font-weight:600">A+</button>
+<button type="button" id="a-contrast" aria-pressed="false">High contrast</button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap">
+<h1 class="page-title">Teaching</h1>
+<p class="lede">Software engineering subjects at the University of Melbourne since 2017, project-based learning with industry partners, and helping colleagues teach well with generative AI.</p>
+<section class="stats" aria-labelledby="t-kpi"><h2 id="t-kpi" class="vh">At a glance</h2><div class="stats-grid" id="kpis"></div></section>
+<section class="section" aria-labelledby="grid-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem">
+<h2 id="grid-title" class="h2">Subjects by year</h2>
+<div class="legend" style="margin:0">
+<span><span class="sq sq-c" style="width:16px;height:16px;border-radius:4px"></span>Coordinator</span>
+<span><span class="sq sq-t" style="width:16px;height:16px;border-radius:4px"></span>Teaching team</span>
+<span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teach-fg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.2 7 22l5-3 5 3-1.2-8.8"/></svg>Teaching award or fellowship</span>
+</div>
+</div>
+<p class="section-intro" style="margin:.5rem 0 .6rem">Select a subject for details. Hover over a square or an award for the year.</p>
+<p class="readout" aria-live="polite" id="readout">Hover over a square or an award.</p>
+<div class="row" style="gap:1.5rem">
+<div class="grow3 panel" style="padding:.6rem .9rem;overflow-x:auto;flex-basis:620px"><table class="dotgrid" id="subject-grid" style="min-width:640px"><caption class="vh">Subjects taught at the University of Melbourne by year, showing coordinator years</caption></table></div>
+<aside class="grow1"><h3 class="vh">Subject details</h3><div id="subject-details"></div><p class="small muted" style="margin:1.2rem 0 0" id="earlier"></p></aside>
+</div>
+</section>
+<div class="row section">
+<section class="grow1" style="flex-basis:400px" aria-labelledby="sup-title"><h2 id="sup-title" class="h2" style="margin-bottom:1rem">Supervision</h2><ul class="list" id="supervision"></ul></section>
+<section class="grow1" style="flex-basis:400px" aria-labelledby="lead-title"><h2 id="lead-title" class="h2" style="margin-bottom:1rem">Education leadership</h2><ul class="list" id="leadership"></ul></section>
+</div>
+<section class="section" aria-labelledby="beyond-title">
+<h2 id="beyond-title" class="h2">Teaching beyond my subjects</h2>
+<p class="section-intro" style="margin-bottom:1.2rem">Programs and workshops for staff and graduate researchers, mostly on teaching and researching well with generative AI.</p>
+<div class="theme-cards" id="beyond"></div>
+</section>
+<section aria-labelledby="qual-title">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;margin-bottom:1rem">
+<h2 id="qual-title" class="h2" style="margin:0">Teaching qualifications</h2>
+<a href="awards.html" style="font-weight:500">Teaching awards →</a>
+</div>
+<ul class="list" id="quals"></ul>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>I acknowledge the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, the Traditional Owners of the land on which I live and work, and pay my respects to their Elders past and present.</p>
+<div class="links">
+<a href="accessibility.html">Accessibility</a>
+<span>© <span id="year">2026</span> Eduardo Oliveira</span>
+</div>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/teaching.js"></script>
+</body>
+</html>

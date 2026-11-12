@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility – Dr Eduardo Oliveira</title>
+<meta name="description" content="Accessibility features of eduoliveira.com.">
+<meta property="og:title" content="Accessibility – Dr Eduardo Oliveira">
+<meta property="og:description" content="Accessibility features of eduoliveira.com.">
+<meta property="og:image" content="assets/img/eduardo-oliveira.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Eduardo Oliveira</a>
+<nav class="nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="grants.html">Grants</a>
+<a href="awards.html">Awards</a>
+<a href="teaching.html">Teaching</a>
+<a href="talks.html">Talks &amp; writing</a>
+</nav>
+<div class="a11y" role="group" aria-label="Display options">
+<button type="button" id="a-minus" aria-label="Smaller text">A−</button>
+<button type="button" id="a-plus" aria-label="Larger text" style="font-weight:600">A+</button>
+<button type="button" id="a-contrast" aria-pressed="false">High contrast</button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap" style="max-width:780px">
+<h1 class="page-title">Accessibility</h1>
+<p class="lede">I want everyone to be able to use this site.</p>
+<h2 class="h2">What the site offers</h2>
+<ul>
+<li>Text size buttons (A− and A+) and a high-contrast mode at the top of every page. Your choice is remembered on this device.</li>
+<li>A "Skip to main content" link, a logical heading order and visible focus outlines for keyboard users.</li>
+<li>Every chart has a text readout or a table, and every interactive chart can also be used through ordinary buttons and lists.</li>
+<li>Colour is never the only way information is shown: roles and award types also differ by pattern or shape.</li>
+<li>Animations stop when your device is set to reduce motion.</li>
+</ul>
+<h2 class="h2">Something not working?</h2>
+<p>Please email <a href="mailto:eduardo.oliveira@unimelb.edu.au">eduardo.oliveira@unimelb.edu.au</a> and tell me what you were trying to do. I'll fix it as soon as I can.</p>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>I acknowledge the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, the Traditional Owners of the land on which I live and work, and pay my respects to their Elders past and present.</p>
+<div class="links">
+<a href="accessibility.html">Accessibility</a>
+<span>© <span id="year">2026</span> Eduardo Oliveira</span>
+</div>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/none.js"></script>
+</body>
+</html>

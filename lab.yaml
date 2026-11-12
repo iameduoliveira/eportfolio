@@ -1,0 +1,29 @@
+# ---------------------------------------------------------------
+# Settings for the monthly publications update (pipeline/fetch.py).
+# This is the same engine as the EF team dashboard, set up for one person.
+# ---------------------------------------------------------------
+
+lab:
+  name: "Eduardo Oliveira"
+  institution: "The University of Melbourne"
+  default_member: "Eduardo Oliveira"
+  maintainer:
+    name: "Eduardo Oliveira"
+    email: "eduardo.oliveira@unimelb.edu.au"
+
+settings:
+  # OpenAlex work types to leave out of every count
+  exclude_types: [paratext, erratum, retraction, peer-review, editorial, letter, supplementary-materials]
+  # Merge a preprint and its published version (same title) into one paper, like Google Scholar does
+  merge_duplicate_titles: true
+  network_max_authors: 50
+  # Google Scholar (via SerpApi) is refreshed at most this often; the update runs monthly
+  scholar_refresh_days: 25
+  # The citing-countries map is not used on this site, so skip those lookups
+  citing_countries: false
+
+members:
+  - name: Eduardo Oliveira
+    role: Senior Lecturer
+    orcid: 0000-0001-5063-8860
+    scholar: https://scholar.google.com/citations?user=WxcwAEIAAAAJ&hl=en
