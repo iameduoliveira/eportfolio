@@ -31,9 +31,9 @@ about:
 journey:
 - from: 2003
   to: 2013
-  title: Research alongside industry
+  title: Where research began
   subtitle: Collaborative and smart learning environments
-  text: While working full time as a senior software engineer and technical leader at CESAR Innovation Centre (Brazil), on international projects with Motorola, Samsung and others, I completed my Masters and PhD, building i-Collaboration, an intelligent model, with a chatbot, for personalised collaboration in online learning.
+  text: Alongside my work as a software engineer, I began exploring research and developed a growing interest in understanding how technology could solve complex problems. It was the beginning of a journey that would eventually bring me into academia.
   themes: [sle, ai, se]
   tags: [Mobile development, Industry internships, Agile methods]
   research_awards:
@@ -43,9 +43,9 @@ journey:
     detail: Brazilian Computer Society, 2009
 - from: 2014
   to: 2019
-  title: A new start in Melbourne
+  title: A new chapter in Melbourne
   subtitle: Smart cities, health and public spaces
-  text: After moving to Melbourne in 2014, my research leaned towards smart cities, with context-aware middleware for health and fitness devices, smart urban planning, how audiences engage with public interactive systems, and how learning happens in museums.
+  text: Moving to Melbourne opened a new chapter in my career, bringing together my experience in industry with teaching and academic research. I discovered how much I enjoyed working with students, and education became an increasingly important part of my professional life.
   themes: [sle, hai]
   tags: [Smart cities, Smart campus, Health technologies, Museums]
   grants:
@@ -60,9 +60,9 @@ journey:
     detail: School of Computing and Information Systems, 2017
 - from: 2020
   to:
-  title: Technology and research in education
+  title: Bringing technology and education together
   subtitle: AI that supports learning, not replaces it
-  text: With research time in my role for the first time from 2020, I've worked on learning analytics and self-regulated learning, writing analytics and explainable authorship verification, software engineering education and, since 2023, generative AI and what good teamwork between students and AI looks like.
+  text: Today, much of my research is inspired by the challenges I encounter in teaching. I explore how AI, learning analytics and educational technologies can help us understand and improve learning, with a strong focus on putting research into practice.
   themes: [ai, la, hai, se, sty]
   grants:
   - title: 'Positive Behaviour Support: best practice through collaboration'
