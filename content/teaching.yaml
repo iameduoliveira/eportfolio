@@ -26,7 +26,6 @@ subjects:
   teaching_team:
   - 2020
   - 2021
-  - 2026
   note: Industry-based capstone
 - code: SWEN90009
   name: Software Requirements Analysis
@@ -86,11 +85,14 @@ awards:
   2023: Edward Brown Award for Teaching Excellence
   2024: GEM Scott Teaching Fellowship
   2025: Senior Fellow of the Higher Education Academy
+# supervision: shown on the Teaching page
 supervision:
-- number: '7'
-  text: PhD candidates co-supervised (principal supervisor for 2), in learning analytics, generative AI in education, LLMs for feedback and social media addiction
 - number: 50+
   text: Master's capstone students supervised (2018–2024)
+# research_supervision: shown on the Research page
+research_supervision:
+- number: '7'
+  text: PhD candidates co-supervised (principal supervisor for 2), in learning analytics, generative AI in education, LLMs for feedback and social media addiction
 - number: 20+
   text: Master's coursework research projects, mostly AI in education and software engineering practice
 leadership:

@@ -272,3 +272,9 @@ html.hc .era-panel { border-color: var(--ink); }
 .cp-action { align-self: flex-start; }
 .chord-papers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem 2rem; }
 @media (max-width: 900px) { .chord-papers { grid-template-columns: 1fr; } }
+
+/* research: supervision */
+.sup-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem 2.5rem; }
+.sup-list li { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-top: 1px solid var(--line); }
+.sup-list .num { flex: 0 0 3.2rem; font-size: 1.6rem; font-weight: 700; color: var(--navy); line-height: 1.1; }
+.sup-list li > span:last-child { font-size: 0.95rem; }

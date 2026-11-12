@@ -35,6 +35,14 @@
     renderAll();
   }).catch((e) => fail($('kpis'), e));
 
+  // research supervision (kept with the other supervision details in content/teaching.yaml)
+  load('teaching').then((T) => {
+    const items = T.research_supervision || [];
+    if (!items.length) return;
+    $('research-supervision').innerHTML = items.map((s) => `<li><span class="num">${esc(s.number)}</span><span>${esc(s.text)}</span></li>`).join('');
+    $('supervision').hidden = false;
+  }).catch(() => {});
+
   function renderAll() {
     F = D.works.filter(inTheme);
     renderChips(); renderKpis(); renderPubs(); renderCites(); renderPeople(); renderSel(); renderInsts(); renderChord(); renderList(); drawNetwork();
