@@ -20,8 +20,8 @@ links:
 - label: University profile
   url: https://findanexpert.unimelb.edu.au/profile/653031
 about:
-- I'm an educator, researcher and former software engineer who is passionate about improving how we teach and learn.
-- At the University of Melbourne, I explore how AI, learning analytics and educational technologies can make education more meaningful, inclusive and effective. My work is grounded in real educational challenges, with a focus on turning research into practical solutions that benefit students and educators.
+- I'm an educator, researcher and former software engineer who loves teaching and finding better ways to support learning.
+- At the University of Melbourne, I research how AI, learning analytics and educational technologies can help students and educators. Much of my work comes from challenges I encounter in teaching, and I'm particularly interested in seeing research make a difference in practice.
 # journey: the "How my research has grown" chapters on Home (oldest first).
 #   from / to:  years (leave "to" empty for "now"). Paper counts and the most-cited paper are worked out
 #               from your publications, so they stay current.
@@ -33,7 +33,7 @@ journey:
   to: 2013
   title: Where research began
   subtitle: Collaborative and smart learning environments
-  text: Alongside my work as a software engineer, I began exploring research and developed a growing interest in understanding how technology could solve complex problems. It was the beginning of a journey that would eventually bring me into academia.
+  text: While working as a software engineer on international projects at Motorola and Samsung, I also pursued academic research in mobile programming, collaborative technologies and smart learning environments. It was during this time that my interest in research grew, eventually leading me into academia.
   themes: [sle, ai, se]
   tags: [Mobile development, Industry internships, Agile methods]
   research_awards:
@@ -45,7 +45,7 @@ journey:
   to: 2019
   title: A new chapter in Melbourne
   subtitle: Smart cities, health and public spaces
-  text: Moving to Melbourne opened a new chapter in my career, bringing together my experience in industry with teaching and academic research. I discovered how much I enjoyed working with students, and education became an increasingly important part of my professional life.
+  text: Moving to Melbourne, I continued collaborating with industry and government, including IBM and the City of Melbourne. My research expanded into smart cities, health and public spaces, but it was also during this time that I discovered how much I enjoyed teaching.
   themes: [sle, hai]
   tags: [Smart cities, Smart campus, Health technologies, Museums]
   grants:
