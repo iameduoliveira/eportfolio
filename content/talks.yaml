@@ -1,15 +1,18 @@
-# talks.yaml — the Talks & writing page.
+# talks.yaml — the Projects & talks page.
+#   projects: cards at the top of the page (projects you contribute to)
+#   featured: highlighted writing, shown above the talks
 #   type:  Keynote or invited talk | Workshop | University seminar | Writing | In the media
 #   label: the badge shown (Keynote, Invited talk, Panel, Article, ...)
 #   place: a key from 'places' (add new places with lat/lon to put them on the map)
 #   year:  leave empty (null) if unknown; month is optional (Jan, Feb, ...)
 
-featured:
+projects:
 - kicker: Open software · contributor
   title: Dynalytics
   text: An open framework and software ecosystem in R, Python and JavaScript for analysing dynamic systems, from transition networks to higher-order networks, with built-in statistical validation of every finding.
   link_text: Explore Dynalytics
   url: https://dynasite.org/#/
+featured:
 - kicker: Book chapters · open access · 2025
   title: 'Advanced Learning Analytics Methods: AI, Precision and Complexity'
   text: Three chapters on explainable and evaluative AI, large language models in education, and using LLMs to explain predictive models. Edited by Mohammed Saqr and Sonsoles López-Pernas (Springer).

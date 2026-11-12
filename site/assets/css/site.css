@@ -111,7 +111,6 @@ input[type="search"], select { width: 100%; min-height: 44px; padding: 0 0.8rem;
 .paper-meta { font-size: 0.9rem; color: var(--muted); }
 .me { font-weight: 700; color: var(--ink); }
 .links-inline a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 0.5rem; font-weight: 500; }
-pre.bib { margin: 0; padding: 0.9rem 1rem; font-size: 0.78rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .empty { margin: 1.5rem 0; padding: 1.5rem; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); text-align: center; }
 .more { text-align: center; margin-top: 2rem; }
 
@@ -152,7 +151,6 @@ table.data thead th { background: var(--soft); border-top: none; }
 .hl { display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
 .hl .lab { flex: 0 0 7.5rem; font-size: 0.85rem; font-weight: 600; color: var(--navy); padding-top: 0.15rem; }
 .hl .body { flex: 1 1 400px; min-width: 0; }
-details.more-about summary { cursor: pointer; font-weight: 500; color: var(--navy); min-height: 44px; display: inline-flex; align-items: center; }
 
 /* research */
 .network-box { position: relative; overflow: hidden; }

@@ -5,6 +5,9 @@
 # topics:   the words in the "Topics I research" cloud (title keywords, plus OpenAlex keywords via `openalex_keywords`).
 # papers:   your corrections. Each paper's `themes` list here WINS over the keywords. Papers are matched by title.
 #           New papers from Google Scholar are tagged automatically; add them here only to correct them.
+#           Optional per paper:
+#             coauthors: [Full Name, ...]  people Google Scholar cut off with "..." (counted in the network)
+#             hide: true                   leave this paper off the site
 #           Marked # CHECK: papers that need your eye (health papers under AI; papers with no theme).
 
 themes:
@@ -230,6 +233,7 @@ papers:
   - title: "Facets of AI personalization: A systematic review of fine-tuned large language models for teaching and learning"
     year: 2025
     themes: [ai]
+    coauthors: [Mohammed Saqr]   # Scholar's author list stops at "..."
   - title: "From enhancement to transformation: AI pedagogy through mindset, specialised training, and structured support"
     year: 2025
     themes: [ai]

@@ -1,4 +1,4 @@
-/* Talks & writing page: featured items, headline numbers, map of places and the filterable list. */
+/* Projects & talks page: project cards, featured writing, headline numbers, map of places and the filterable list. */
 (function () {
   const { esc, load, fail, plural, delegate } = window.EO;
   const $ = (id) => document.getElementById(id);
@@ -19,7 +19,10 @@
 
   Promise.all([load('talks'), load('world')]).then(([k, w]) => {
     K = k; W = w; K.items = K.items.map((x, i) => Object.assign({ i }, x));
-    $('featured').innerHTML = (K.featured || []).map((f) => `<div class="feature"><p class="k">${esc(f.kicker)}</p><h3 style="margin:0 0 .5rem;font-size:1.25rem">${esc(f.title)}</h3><p class="muted" style="margin:0 0 .9rem;font-size:.92rem">${esc(f.text)}</p><a href="${esc(f.url)}" style="font-weight:600;font-size:.92rem">${esc(f.link_text)} →</a></div>`).join('');
+    const card = (f) => `<div class="feature"><p class="k">${esc(f.kicker)}</p><h3 style="margin:0 0 .5rem;font-size:1.25rem">${esc(f.title)}</h3><p class="muted" style="margin:0 0 .9rem;font-size:.92rem">${esc(f.text)}</p><a href="${esc(f.url)}" style="font-weight:600;font-size:.92rem">${esc(f.link_text)} →</a></div>`;
+    $('projects').innerHTML = (K.projects || []).map(card).join('');
+    $('featured').innerHTML = (K.featured || []).map(card).join('');
+    $('featured').parentElement.hidden = !(K.featured || []).length;
     const spoken = K.items.filter((x) => SPOKEN[x.type]);
     const countries = new Set(spoken.filter((x) => x.place && K.places[x.place]).map((x) => K.places[x.place].name.split(', ').pop().replace(/^(Melbourne|Brisbane)$/, 'Australia')));
     $('kpis').innerHTML = [[K.items.filter((x) => x.type === 'Keynote or invited talk').length, 'keynotes and invited talks'], [K.items.filter((x) => x.type === 'Workshop').length, 'international workshops'],

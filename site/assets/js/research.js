@@ -9,7 +9,7 @@
   const per = (y) => (!y ? null : y <= 2015 ? '≤2015' : y <= 2019 ? '2016–19' : String(y));
   const params = new URLSearchParams(location.search);
   const S = { theme: params.get('theme') || 'all', table: false, sel: null, hoverNode: null, upto: null, playing: false,
-    topic: null, cell: null, q: '', fType: 'all', fYear: 'all', sort: 'new', ranked: false, awarded: false, limit: 20, open: null, copied: null };
+    topic: null, cell: null, q: '', fType: 'all', fYear: 'all', sort: 'new', ranked: false, awarded: false, limit: 20 };
   let D, F, byId = {};
 
   /* keep keyboard focus on the same control after a section is redrawn */
@@ -98,12 +98,16 @@
   }
 
   /* ---------- co-author network (live force layout) ---------- */
-  const P = {}; let alpha = 1, drag = null, dragMoved = false, raf = null, timer = null;
+  const P = {}; let alpha = 1, drag = null, dragMoved = false, raf = null, timer = null, onScreen = true, NAVY = '#1F4E99', INK = '#16202C';
+  const DRIFT = 0.05, FLOOR = 0.02; // gentle, never-ending float (off when the visitor prefers less motion)
+  const colours = () => { NAVY = window.EO.css('--navy') || NAVY; INK = window.EO.css('--ink') || INK; };
   const rad = (n) => (n.id === 'me' ? 22 : Math.round(5 + Math.sqrt(n.p) * 3.2));
   const visible = (n) => S.upto == null || n.id === 'me' || n.fy <= S.upto;
   const lit = (n) => n.id === 'me' || S.theme === 'all' || n.th.indexOf(S.theme) >= 0;
   function initNetwork() {
-    D.nodes.forEach((n, i) => { const a = i * 2.39996, r = n.id === 'me' ? 0 : 90 + (i % 7) * 25; P[n.id] = { x: 400 + Math.cos(a) * r, y: 260 + Math.sin(a) * r * 0.8, vx: 0, vy: 0 }; });
+    D.nodes.forEach((n, i) => { const a = i * 2.39996, r = n.id === 'me' ? 0 : 90 + (i % 7) * 25; P[n.id] = { x: 400 + Math.cos(a) * r, y: 260 + Math.sin(a) * r * 0.8, vx: 0, vy: 0, ph: i * 1.7 }; });
+    colours();
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; }).observe($('net-svg'));
     if (reduceMotion()) { for (let i = 0; i < 400; i++) tick(); alpha = 0; drawNetwork(); } else loop();
   }
   function tick() {
@@ -124,24 +128,26 @@
       const f = (d - L) * k * alpha;
       A.vx += dx / d * f; A.vy += dy / d * f; B.vx -= dx / d * f; B.vy -= dy / d * f;
     });
+    const moving = !reduceMotion(), t = performance.now();
     vis.forEach((n) => {
       const p = P[n.id];
       if (n.id === 'me' && drag !== 'me') { p.x += (400 - p.x) * 0.1; p.y += (260 - p.y) * 0.1; p.vx = p.vy = 0; return; }
       if (drag === n.id) { p.vx = p.vy = 0; return; }
       p.vx += (400 - p.x) * 0.001 * alpha; p.vy += (260 - p.y) * 0.0015 * alpha;
+      if (moving) { p.vx += Math.sin(t * 0.00055 + p.ph) * DRIFT; p.vy += Math.cos(t * 0.00047 + p.ph * 1.3) * DRIFT; }
       p.vx *= 0.6; p.vy *= 0.6;
       p.x = Math.max(24, Math.min(776, p.x + p.vx)); p.y = Math.max(24, Math.min(496, p.y + p.vy));
     });
-    alpha = Math.max(drag ? 0.3 : 0, alpha * 0.985);
+    alpha = Math.max(drag ? 0.3 : reduceMotion() ? 0 : FLOOR, alpha * 0.985);
   }
   function loop() {
-    const step = () => { if (alpha > 0.01 || drag) { tick(); drawNetwork(); } raf = requestAnimationFrame(step); };
+    const step = () => { if (drag || (onScreen && !document.hidden && (alpha > 0.01 || !reduceMotion()))) { tick(); drawNetwork(); } raf = requestAnimationFrame(step); };
     raf = requestAnimationFrame(step);
   }
   function reheat(v) { alpha = Math.max(alpha, v); if (reduceMotion()) { for (let i = 0; i < 300 && alpha > 0.01; i++) tick(); drawNetwork(); } }
   function drawNetwork() {
     if (!D) return;
-    const f1 = (v) => v.toFixed(1), sel = S.sel, hov = S.hoverNode, NAVY = window.EO.css('--navy') || '#1F4E99', INK = window.EO.css('--ink') || '#16202C';
+    const f1 = (v) => v.toFixed(1), sel = S.sel, hov = S.hoverNode;
     const edges = D.edges.filter((e) => visible(byId[e.a]) && visible(byId[e.b])).map((e) => {
       const on = lit(byId[e.a]) && lit(byId[e.b]), touch = [sel, hov].some((x) => x && (e.a === x || e.b === x));
       return `<line x1="${f1(P[e.a].x)}" y1="${f1(P[e.a].y)}" x2="${f1(P[e.b].x)}" y2="${f1(P[e.b].y)}" stroke="${touch ? '#eb6834' : '#8FA3BF'}" stroke-width="${Math.min(6, 0.8 + e.w * 0.5)}" stroke-opacity="${on ? (touch ? 0.9 : 0.4) : 0.06}"/>`;
@@ -150,7 +156,7 @@
       const isSel = sel === n.id, isHov = hov === n.id;
       return `<circle data-id="${esc(n.id)}" cx="${f1(P[n.id].x)}" cy="${f1(P[n.id].y)}" r="${rad(n) + (isHov ? 2 : 0)}" fill="${n.id === 'me' ? NAVY : isSel ? '#eb6834' : '#6E8FC9'}" fill-opacity="${lit(n) ? 1 : 0.15}" stroke="${isSel || isHov ? INK : '#fff'}" stroke-width="${isSel || isHov ? 3 : 2}" style="cursor:${drag === n.id ? 'grabbing' : 'grab'}"/>`;
     }).join('');
-    const short = (s) => s.split(' ')[0] + ' ' + s.split(' ').slice(-1)[0];
+    const short = (s) => { const w = s.split(' '), i = w.length - 2; return w[0] + ' ' + (i > 0 && /^(de|da|do|dos|das|van|von|der|di|le|la)$/i.test(w[i]) ? w[i] + ' ' : '') + w[w.length - 1]; };
     const labels = D.nodes.filter((n) => visible(n) && (n.p >= 9 || n.id === sel || n.id === hov) && n.id !== 'me').map((n) =>
       `<text x="${f1(P[n.id].x)}" y="${f1(n.id === 'me' ? P[n.id].y + 40 : P[n.id].y - rad(n) - 7)}" text-anchor="middle" font-size="13" font-weight="500" fill="${INK}" fill-opacity="${lit(n) ? 1 : 0.3}" style="paint-order:stroke;stroke:#FBFCFE;stroke-width:4px;pointer-events:none">${esc(short(n.n))}</text>`).join('');
     $('net-svg').innerHTML = edges + nodes + labels;
@@ -221,18 +227,6 @@
   }
 
   /* ---------- publication list ---------- */
-  function bib(w) {
-    const clean = (s) => s.normalize('NFD').replace(/[^A-Za-z]/g, '').toLowerCase();
-    const first = clean(((w.af.split(',')[0] || 'anon').trim().split(/\s+/).pop()) || 'anon');
-    const word = clean(w.t.split(/\s+/).find((x) => x.length > 3) || 'paper');
-    const kind = w.k === 'Journal' ? 'article' : w.k === 'Conference' ? 'inproceedings' : w.k === 'Book chapter' ? 'incollection' : 'misc';
-    const vf = kind === 'article' ? 'journal' : kind === 'misc' ? 'howpublished' : 'booktitle';
-    const L = ['@' + kind + '{' + first + (w.y || 'nd') + word + ',', '  title = {' + w.t + '},', '  author = {' + w.af.replace(/,?\s*et al\.?$/, ', others').split(/,\s*/).join(' and ') + '},'];
-    if (w.vfull || w.v) L.push('  ' + vf + ' = {' + (w.vfull || w.v) + '},');
-    if (w.y) L.push('  year = {' + w.y + '},');
-    if (w.doi) L.push('  doi = {' + w.doi.replace('https://doi.org/', '') + '},');
-    return L.concat('}').join('\n');
-  }
   function listFiltered() {
     const topicSet = S.topic ? new Set((D.words.find((x) => x[0] === S.topic) || [0, []])[1]) : null, q = S.q.trim().toLowerCase();
     const L = D.works.map((w, i) => Object.assign({ i }, w)).filter((w) => inTheme(w)
@@ -258,14 +252,12 @@
     if (S.sort === 'cited') groups.push({ label: 'Most cited', count: '', items: shown });
     else shown.forEach((w) => { const lab = w.y ? String(w.y) : 'Undated'; let g = groups[groups.length - 1];
       if (!g || g.label !== lab) { const n = L.filter((x) => (x.y ? String(x.y) : 'Undated') === lab).length; g = { label: lab, count: plural(n, 'paper'), items: [] }; groups.push(g); } g.items.push(w); });
-    const item = (w) => { const open = S.open === w.i;
+    const item = (w) => {
       return `<li class="paper"><a class="paper-title" href="${esc(w.href || w.gs)}">${esc(w.t)}</a>
         <div class="paper-meta" style="margin-top:.25rem">${authors(w.af)}</div>
         <div class="paper-meta"><em>${esc(w.v || 'Venue not recorded')}</em>${w.y ? ', ' + w.y : ''}</div>
         <div class="badges"><span class="badge">${esc(w.k)}</span>${w.tier ? `<span class="badge badge-rank">${esc(w.tier)}</span>` : ''}${w.aw ? `<span class="badge badge-award">★ ${esc(w.aw)}</span>` : ''}<span class="muted">${plural(w.c, 'citation')}</span>
-          <span style="flex:1 1 auto"></span><span class="links-inline">${w.doi ? `<a href="${esc(w.doi)}">DOI</a>` : ''}<a href="${esc(w.gs)}">Google Scholar</a></span>
-          <button type="button" class="btn" style="min-height:32px" data-act="cite" data-i="${w.i}" data-focus="cite-${w.i}" aria-expanded="${open}">Cite</button></div>
-        ${open ? `<div class="panel" style="margin-top:.7rem;background:var(--soft)"><pre class="bib">${esc(bib(w))}</pre><div style="padding:0 1rem .8rem;display:flex;gap:.8rem;align-items:center"><button type="button" class="btn-primary" style="min-height:36px;border:none;cursor:pointer;font-size:.85rem" data-act="copy" data-i="${w.i}">Copy BibTeX</button><span class="small muted" aria-live="polite">${S.copied === w.i ? 'Copied.' : S.copied === -1 ? 'Copying is blocked here; select the text above instead.' : ''}</span></div></div>` : ''}
+          <span style="flex:1 1 auto"></span><span class="links-inline">${w.doi ? `<a href="${esc(w.doi)}">DOI</a>` : ''}${w.gs ? `<a href="${esc(w.gs)}">Google Scholar</a>` : ''}</span></div>
       </li>`; };
     redraw($('pub-list'), groups.map((g) => `<h3 class="group-h"><span>${esc(g.label)}</span><span>${esc(g.count)}</span></h3><ol style="list-style:none;margin:0;padding:0">${g.items.map(item).join('')}</ol>`).join('') +
       (L.length > S.limit ? `<div class="more"><button type="button" class="btn" data-act="more" data-focus="more">Show ${Math.min(20, L.length - S.limit)} more (${L.length - S.limit} remaining)</button></div>` : ''));
@@ -285,10 +277,6 @@
       'clear-list': () => { Object.assign(S, { q: '', fType: 'all', fYear: 'all', ranked: false, awarded: false, topic: null, cell: null, limit: 20 });
         $('q').value = ''; $('f-type').value = 'all'; $('f-year').value = 'all'; $('f-ranked').checked = false; $('f-award').checked = false; renderCloud(); renderGrid(); renderList(); },
       more: () => { S.limit += 20; renderList(); },
-      cite: (el) => { const i = +el.dataset.i; S.open = S.open === i ? null : i; S.copied = null; renderList(); },
-      copy: (el) => { const i = +el.dataset.i, txt = bib(Object.assign({ i }, D.works[i]));
-        const done = (ok) => { S.copied = ok ? i : -1; renderList(); };
-        try { navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); } catch (e) { done(false); } },
     });
     $('table-toggle').addEventListener('click', () => { S.table = !S.table; renderPubs(); });
     $('pubs-chart').addEventListener('mouseover', (e) => { const b = e.target.closest('.bar'); if (b) pubsHover(b.dataset.y); });
@@ -306,7 +294,7 @@
     $('f-ranked').addEventListener('change', (e) => { S.ranked = e.target.checked; S.limit = 20; renderList(); });
     $('f-award').addEventListener('change', (e) => { S.awarded = e.target.checked; S.limit = 20; renderList(); });
     $('net-play').addEventListener('click', play);
-    document.addEventListener('eo:display', drawNetwork);
+    document.addEventListener('eo:display', () => { colours(); drawNetwork(); });
     $('net-shuffle').addEventListener('click', () => { Object.keys(P).forEach((id) => { if (id !== 'me') { P[id].x = 400 + (P[id].x - 400) * 0.35 + (Math.random() - 0.5) * 60; P[id].y = 260 + (P[id].y - 260) * 0.35 + (Math.random() - 0.5) * 60; } }); reheat(1); });
     // dragging and hovering people in the network
     const svg = $('net-svg');

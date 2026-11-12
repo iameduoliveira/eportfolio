@@ -36,10 +36,8 @@
       </div>
       <p class="small muted" style="margin:1.2rem 0 0">Source: Google Scholar and OpenAlex, updated monthly. Last update ${esc(fmtDate(R.scholar_fetched || R.generated_at))}. <a href="research.html">Explore my research →</a></p>`;
 
-    // about: short version plus the full text on request
-    document.getElementById('about').innerHTML =
-      (P.about_short || []).map((p) => `<p style="margin:0 0 1em">${esc(p)}</p>`).join('') +
-      `<details class="more-about"><summary>More about me</summary>${(P.about_full || []).map((p) => `<p style="margin:.6em 0 1em">${esc(p)}</p>`).join('')}</details>`;
+    // about
+    document.getElementById('about').innerHTML = (P.about || []).map((p) => `<p style="margin:0 0 1em">${esc(p)}</p>`).join('');
 
     // theme cards, with live paper counts
     document.getElementById('theme-cards').innerHTML = R.themes.map(([code, label, long, desc]) => {
@@ -59,7 +57,7 @@
     if (ml.length) {
       const names = ml.map((m) => `<a href="${esc(m.url)}">${esc(m.label)}</a>`);
       const list = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1] : names[0];
-      document.getElementById('media').innerHTML = `My work has featured in ${list}. <a href="talks.html">Talks, writing and media →</a>`;
+      document.getElementById('media').innerHTML = `My work has featured in ${list}. <a href="talks.html">Projects, talks and media →</a>`;
     }
   }).catch((e) => fail(document.getElementById('home-stats'), e));
 
