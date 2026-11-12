@@ -25,7 +25,7 @@ featured:
   url: https://link.springer.com/book/10.1007/978-3-031-95365-1
 places:
   finland:
-    name: Finland
+    name: Joensuu, Finland
     lat: 62.6
     lon: 29.76
   indonesia:
@@ -33,9 +33,9 @@ places:
     lat: -7.77
     lon: 110.38
   brazil:
-    name: Brazil
-    lat: -15.8
-    lon: -47.9
+    name: Passo Fundo, Brazil
+    lat: -28.2
+    lon: -52.4
   recife:
     name: Recife, Brazil
     lat: -8.05
@@ -49,11 +49,11 @@ places:
     lat: 37.57
     lon: 126.98
   melbourne:
-    name: Melbourne
+    name: Melbourne, Australia
     lat: -37.81
     lon: 144.96
   brisbane:
-    name: Brisbane
+    name: Brisbane, Australia
     lat: -27.47
     lon: 153.03
 items:
