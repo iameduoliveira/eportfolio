@@ -26,7 +26,7 @@ about:
 #   from / to:  years (leave "to" empty for "now"). Paper counts and the most-cited paper are worked out
 #               from your publications, so they stay current.
 #   themes:     theme codes from themes.yaml (they link to the Research page); tags: extra words shown the same way
-#   grants / awards: one per row, each with a title and a detail line
+#   grants / research_awards / teaching_awards: one per line, each with a title and a detail
 #   notes:      optional words added after a most-cited paper, keyed by the start of its title
 journey:
 - from: 2003
@@ -36,7 +36,7 @@ journey:
   text: While working full time as a senior software engineer and technical leader at CESAR Innovation Centre (Brazil), on international projects with Motorola, Samsung and others, I completed my Masters and PhD, building i-Collaboration, an intelligent model, with a chatbot, for personalised collaboration in online learning.
   themes: [sle, ai, se]
   tags: [Mobile development, Industry internships, Agile methods]
-  awards:
+  research_awards:
   - title: Best PhD Thesis
     detail: Brazilian Computer Society, 2013
   - title: Third Best Masters Dissertation
@@ -55,7 +55,7 @@ journey:
     detail: McCoy Project with Museums Victoria · Chief Investigator · 2017
   - title: Google CS Educator professional development
     detail: Google · Co-investigator · 2018 and 2019
-  awards:
+  teaching_awards:
   - title: Excellence Award in Tutoring
     detail: School of Computing and Information Systems, 2017
 - from: 2020
@@ -73,15 +73,28 @@ journey:
     detail: GEM Scott Teaching Fellowship · Lead · 2024–2025
   - title: Argumentation in university writing compared to TOEFL iBT writing
     detail: TOEFL Committee of Examiners · Co-investigator · 2026–2027
-  awards:
+  research_awards:
   - title: Best Student Paper
     detail: AIED 2026
+  - title: Excellence Award in Interdisciplinary Research
+    detail: FEIT, 2026
   - title: Best Paper
     detail: ICSLE 2025
   - title: Hanson Medal
     detail: IChemE, 2024
   - title: Best Concise Paper
     detail: ASCILITE 2023
+  teaching_awards:
+  - title: Senior Fellow, Higher Education Academy
+    detail: Advance HE, 2025
+  - title: GEM Scott Teaching Fellowship
+    detail: University of Melbourne, 2024
+  - title: Edward Brown Award for Teaching Excellence
+    detail: University of Melbourne, 2023
+  - title: The Kelvin Medal
+    detail: FEIT, 2022
+  - title: Excellence Award in Teaching and Learning
+    detail: School of Computing and Information Systems, 2021
 journey_notes:
   Uncovering the Honeypot Effect: a collaboration with Microsoft on a project designed for the White Night Melbourne festival
 highlights:
