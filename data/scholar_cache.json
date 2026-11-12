@@ -1,13 +1,13 @@
 {
  "WxcwAEIAAAAJ": {
-  "fetched_at": "2026-11-07T07:22:45+00:00",
+  "fetched_at": "2026-11-12T02:30:08+00:00",
   "name": "Eduardo Oliveira",
   "cited_by": {
    "table": [
     {
      "citations": {
-      "all": 896,
-      "since_2021": 671
+      "all": 908,
+      "since_2021": 683
      }
     },
     {
@@ -30,7 +30,7 @@
     },
     {
      "year": 2010,
-     "citations": 6
+     "citations": 7
     },
     {
      "year": 2011,
@@ -86,7 +86,7 @@
     },
     {
      "year": 2024,
-     "citations": 88
+     "citations": 89
     },
     {
      "year": 2025,
@@ -94,7 +94,7 @@
     },
     {
      "year": 2026,
-     "citations": 258
+     "citations": 269
     }
    ]
   },
@@ -105,7 +105,7 @@
     "authors": "N Wouters, J Downs, M Harrop, T Cox, E Oliveira, S Webber, F Vetere, ...",
     "publication": "DIS'16 location:Brisbane, Australia date:4-8 June 2016, 2016",
     "year": 2016,
-    "cites": 186
+    "cites": 187
    },
    {
     "title": "The importance and meaning of session behaviour in a MOOC",
@@ -113,7 +113,7 @@
     "authors": "PG de Barba, D Malekian, EA Oliveira, J Bailey, T Ryan, G Kennedy",
     "publication": "Computers & Education 146, 103772, 2020",
     "year": 2020,
-    "cites": 124
+    "cites": 125
    },
    {
     "title": "Enabling adaptive, personalised and context-aware interaction in a smart learning environment: Piloting the iCollab system",
@@ -137,7 +137,7 @@
     "authors": "S López-Pernas, K Misiejuk, E Oliveira, M Saqr",
     "publication": "Proceedings of the 25th koli calling international conference on computing …, 2025",
     "year": 2025,
-    "cites": 29
+    "cites": 31
    },
    {
     "title": "AI, Explainable AI and Evaluative AI: Informed Data-Driven Decision-Making in Education",
@@ -201,7 +201,7 @@
     "authors": "S Rios, Y Zhang, E Oliveira",
     "publication": "ASCILITE Publications, 195-204, 2023",
     "year": 2023,
-    "cites": 15
+    "cites": 16
    },
    {
     "title": "Delving into the psychology of machines: Exploring the structure of self-regulated learning via LLM-generated survey responses",
@@ -212,20 +212,20 @@
     "cites": 14
    },
    {
+    "title": "Assuring quality learning in a gen AI-integrated future: The role of adaptive capabilities",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:LhH-TYMQEocC",
+    "authors": "JM Lodge, P de Barba, L Ainscough, JR Brazil, J Broadbent, D Ebbert, ...",
+    "publication": "Tertiary Education Quality and Standards Agency, 2026",
+    "year": 2026,
+    "cites": 13
+   },
+   {
     "title": "Device nimbus: an intelligent middleware for smarter services for health and fitness",
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:V3AGJWp-ZtQC",
     "authors": "EA Oliveira, M Kirley, JCB Fonseca, K Gama",
     "publication": "International Journal of Distributed Sensor Networks 11 (8), 454626, 2015",
     "year": 2015,
     "cites": 13
-   },
-   {
-    "title": "Assuring quality learning in a gen AI-integrated future: The role of adaptive capabilities",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:LhH-TYMQEocC",
-    "authors": "JM Lodge, P de Barba, L Ainscough, JR Brazil, J Broadbent, D Ebbert, ...",
-    "publication": "Tertiary Education Quality and Standards Agency, 2026",
-    "year": 2026,
-    "cites": 12
    },
    {
     "title": "An Introduction to Large Language Models in Education",
@@ -271,7 +271,7 @@
     "title": "ForUX: um modelo de fórum de discussão para representações fidedignas de idéias",
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:d1gkVwhDpl0C",
     "authors": "EA Oliveira, A Azevedo, J Fonseca, M Godoy, C Alves, AS Gomes",
-    "publication": "Anais do XX Simpósio Brasileiro de Informática na Educação (SBIE …, 2009",
+    "publication": "Brazilian Symposium on Computers in Education (Simpósio Brasileiro de …, 2009",
     "year": 2009,
     "cites": 10
    },
@@ -298,6 +298,14 @@
     "publication": "Proceedings of the 14th Learning Analytics and Knowledge Conference, 936-942, 2024",
     "year": 2024,
     "cites": 9
+   },
+   {
+    "title": "Unpacking Vibe Coding: Help-Seeking Processes in Student-AI Interactions While Programming",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:Ehil0879vHcC",
+    "authors": "D Rinja, EA Oliveira, S López-Pernas, M Saqr, M Specht, K Misiejuk",
+    "publication": "International Conference on Artificial Intelligence in Education, 515-530, 2026",
+    "year": 2026,
+    "cites": 8
    },
    {
     "title": "The impact of cognitive load on students’ academic writing: an authorship verification investigation",
@@ -332,10 +340,10 @@
     "cites": 7
    },
    {
-    "title": "Unpacking Vibe Coding: Help-Seeking Processes in Student-AI Interactions While Programming",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:Ehil0879vHcC",
-    "authors": "D Rinja, EA Oliveira, S López-Pernas, M Saqr, M Specht, K Misiejuk",
-    "publication": "International Conference on Artificial Intelligence in Education, 515-530, 2026",
+    "title": "Hybrid intelligence in requirements education: Preserving student agency in refining user stories with generative AI",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:HtS1dXgVpQUC",
+    "authors": "L Sterling, E Oliveira",
+    "publication": "Information 17 (2), 166, 2026",
     "year": 2026,
     "cites": 6
    },
@@ -362,14 +370,6 @@
     "publication": "2009 International Conference of Soft Computing and Pattern Recognition, 687-690, 2009",
     "year": 2009,
     "cites": 6
-   },
-   {
-    "title": "Hybrid intelligence in requirements education: Preserving student agency in refining user stories with generative AI",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:HtS1dXgVpQUC",
-    "authors": "L Sterling, E Oliveira",
-    "publication": "Information 17 (2), 166, 2026",
-    "year": 2026,
-    "cites": 5
    },
    {
     "title": "The AI Ally Project: Designing a human-centred AI tool for women's safety in online spaces",
@@ -508,6 +508,22 @@
     "cites": 3
    },
    {
+    "title": "Profiling Writing Skills at Scale: A Hybrid Stylometry-LLM Pipeline for Formative Feedback",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:r_AWSJRzSzQC",
+    "authors": "S Pande, Y Song, K Misiejuk, S López-Pernas, M Saqr, EA Oliveira",
+    "publication": "Proceedings of the Thirteenth ACM Conference on Learning@ Scale, 491-495, 2026",
+    "year": 2026,
+    "cites": 2
+   },
+   {
+    "title": "From Writing Traces to Personalised Support: Guiding LLMs with Stylometric Fingerprints",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:yqoGN6RLRZoC",
+    "authors": "D Wu, K Misiejuk, S López-Pernas, G Chen, M Saqr, E Oliveira",
+    "publication": "International Conference on Artificial Intelligence in Education, 469-478, 2026",
+    "year": 2026,
+    "cites": 2
+   },
+   {
     "title": "Combinaçao de Modelos de Aprendizado de Máquina utilizando Teoria de Resposta ao Item para Avaliaçao de Coesao Textual em Redaçoes no contexto do ENEM",
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:sNmaIFBj_lkC",
     "authors": "BA Rosa, H Oliveira, RF Mello, EA Oliveira",
@@ -564,14 +580,6 @@
     "cites": 1
    },
    {
-    "title": "Profiling Writing Skills at Scale: A Hybrid Stylometry-LLM Pipeline for Formative Feedback",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:r_AWSJRzSzQC",
-    "authors": "S Pande, Y Song, K Misiejuk, S López-Pernas, M Saqr, EA Oliveira",
-    "publication": "Proceedings of the Thirteenth ACM Conference on Learning@ Scale, 491-495, 2026",
-    "year": 2026,
-    "cites": 1
-   },
-   {
     "title": "Predicting the Finish Before the Draft Ends: Continuous Forecasting of Writing Performance from Process Traces",
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:OP4eGU-M3BUC",
     "authors": "K Yang, J Wei, Z Liang, M Raković, E Oliveira, D Gašević, G Chen",
@@ -580,10 +588,10 @@
     "cites": 1
    },
    {
-    "title": "From Writing Traces to Personalised Support: Guiding LLMs with Stylometric Fingerprints",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:yqoGN6RLRZoC",
-    "authors": "D Wu, K Misiejuk, S López-Pernas, G Chen, M Saqr, E Oliveira",
-    "publication": "International Conference on Artificial Intelligence in Education, 469-478, 2026",
+    "title": "AI-Assisted Code Review as a Scaffold for Code Quality and Self-Regulated Learning: An Experience Report",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:KbBQZpvPDL4C",
+    "authors": "E Oliveira, M Fu, P Thongtanunam, S López-Pernas, M Saqr",
+    "publication": "Proceedings of the IEEE/ACM 48th International Conference on Software …, 2026",
     "year": 2026,
     "cites": 1
    },
@@ -602,6 +610,22 @@
     "publication": "European Conference on Technology Enhanced Learning, 477-482, 2012",
     "year": 2012,
     "cites": 1
+   },
+   {
+    "title": "It Takes Two to Vibe Code: Profiling Student-AI Programming Interactions Processes and Their High Order Structure",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:lvd772isFD0C",
+    "authors": "K Misiejuk, S López-Pernas, E Oliveira, D Rinja, M Saqr",
+    "publication": "Proceedings of the 26th Koli Calling International Conference on Computing …, 2026",
+    "year": 2026,
+    "cites": 0
+   },
+   {
+    "title": "A GitHub Proxy Framework for Promoting SRL and Student Agency in Software Engineering Capstones",
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:5MTHONV0fEkC",
+    "authors": "J Lu, K Misiejuk, S López-Pernas, M Saqr, A Vassar, J Renzella, ...",
+    "publication": "Proceedings of the 26th Koli Calling International Conference on Computing …, 2026",
+    "year": 2026,
+    "cites": 0
    },
    {
     "title": "Blockchain-Based Data Sharing for National Statistics Offices: A Survey and Privacy Governance Evaluated with the Five Safes Framework",
@@ -656,14 +680,6 @@
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:GFxP56DSvIMC",
     "authors": "K Misiejuk, EA Oliveira, S López-Pernas, M Saqr",
     "publication": "Available at SSRN 6974338, 2026",
-    "year": 2026,
-    "cites": 0
-   },
-   {
-    "title": "AI-Assisted Code Review as a Scaffold for Code Quality and Self-Regulated Learning: An Experience Report",
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WxcwAEIAAAAJ&pagesize=100&citation_for_view=WxcwAEIAAAAJ:KbBQZpvPDL4C",
-    "authors": "E Oliveira, M Fu, P Thongtanunam, S López-Pernas, M Saqr",
-    "publication": "Proceedings of the IEEE/ACM 48th International Conference on Software …, 2026",
     "year": 2026,
     "cites": 0
    },
