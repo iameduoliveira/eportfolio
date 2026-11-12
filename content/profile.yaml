@@ -33,7 +33,7 @@ journey:
   to: 2013
   title: Where research began
   subtitle: Collaborative and smart learning environments
-  text: While working as a software engineer on international projects at Motorola and Samsung, I also pursued academic research in mobile programming, collaborative technologies and smart learning environments. It was during this time that my interest in research grew, eventually leading me into academia.
+  text: While working on international projects at Motorola and Samsung, I also pursued academic research. During my PhD, I designed and built an intelligent chatbot from scratch to support students' learning, using natural language processing and personalised recommendations. That early work sparked an interest in educational AI that continues to shape my research today.
   themes: [sle, ai, se]
   tags: [Mobile development, Industry internships, Agile methods]
   research_awards:
