@@ -232,6 +232,7 @@
     });
     shared.forEach((r) => {
       const [a0, a1] = seg[r.k + r.a], [b0, b1] = seg[r.k + r.b], p0 = pt(a0, R0), p1 = pt(a1, R0), q0 = pt(b0, R0), q1 = pt(b1, R0);
+      r.pa = pt((a0 + a1) / 2, R0 - 4); r.pb = pt((b0 + b1) / 2, R0 - 4);
       r.d = `M${f(p0[0])},${f(p0[1])} A${R0},${R0} 0 0 1 ${f(p1[0])},${f(p1[1])} Q${CX},${CY} ${f(q0[0])},${f(q0[1])} A${R0},${R0} 0 0 1 ${f(q1[0])},${f(q1[1])} Q${CX},${CY} ${f(p0[0])},${f(p0[1])} Z`;
     });
     const arcs = codes.filter((c) => tot[c]).map((c) => {
@@ -240,7 +241,7 @@
       return { c, d: `M${f(o0[0])},${f(o0[1])} A${R1},${R1} 0 ${large} 1 ${f(o1[0])},${f(o1[1])} L${f(i1[0])},${f(i1[1])} A${R0 + 3},${R0 + 3} 0 ${large} 0 ${f(i0[0])},${f(i0[1])} Z`,
         x: l[0], y: l[1] + (Math.cos(mid) < -0.5 ? 14 : 0), anchor: s > 0.15 ? 'start' : s < -0.15 ? 'end' : 'middle' };
     });
-    return (C.geo = { codes, shared, arcs });
+    return (C.geo = { codes, shared, arcs, CX, CY });
   }
   function renderChord() {
     const G = chordGeo();
@@ -249,27 +250,88 @@
     redraw($('chord-themes'), G.codes.map((c) => `<button type="button" class="chip" data-act="ch-theme" data-k="${esc(c)}" data-focus="ch-${esc(c)}" aria-pressed="${C.sel === c}"><span class="sw" style="background:${tcol(c)}"></span>${esc(tname(c))}</button>`).join(''));
     paintChord();
     renderChordPanel();
+    if (!FLOW.raf) startChordMotion();
   }
-  function paintChord() {
+  function buildChord() {
+    const G = chordGeo(), svg = $('chord-svg');
+    svg.innerHTML = `<g id="chord-shapes">${G.shared.map((r, i) => `<path class="rib" style="--i:${i}" data-act="ch-edge" data-k="${r.k}" data-rib="${r.k}" d="${r.d}"></path>`).join('')}
+      ${G.arcs.map((a) => `<g class="arc" data-act="ch-theme" data-k="${esc(a.c)}" data-arc="${esc(a.c)}"><path d="${a.d}" fill="${tcol(a.c)}"></path>
+        <text x="${a.x.toFixed(1)}" y="${a.y.toFixed(1)}" text-anchor="${a.anchor}" font-size="18" fill="var(--ink)">${esc(tname(a.c))}</text>
+        <text x="${a.x.toFixed(1)}" y="${(a.y + 21).toFixed(1)}" text-anchor="${a.anchor}" font-size="15" fill="var(--muted)">${plural(tcount(a.c), 'paper')}</text></g>`).join('')}</g>
+      <g id="chord-flow" aria-hidden="true" pointer-events="none"></g>`;
+    C.built = true;
+  }
+  // what is in focus: hover wins, then the selected relationship, then the selected theme
+  function chordFocus() {
     const G = chordGeo(), H = C.hov;
     const fEdge = H && H.kind === 'edge' ? H.k : (H ? null : C.edge);
     const fTheme = H && H.kind === 'theme' ? H.c : (fEdge === null ? C.sel : null);
-    const ends = fEdge !== null ? [G.shared[fEdge].a, G.shared[fEdge].b] : [fTheme];
-    const ribs = G.shared.map((r) => {
-      let on, fill;
-      if (fEdge !== null) { on = r.k === fEdge; fill = on ? tcol(r.a === C.sel ? r.b : r.a) : '#B9C4D3'; }
-      else { on = r.a === fTheme || r.b === fTheme; fill = on ? tcol(r.a === fTheme ? r.b : r.a) : '#B9C4D3'; }
-      const op = fEdge !== null ? (on ? 0.9 : 0.12) : (on ? 0.7 : 0.2);
-      return `<path class="rib" data-act="ch-edge" data-k="${r.k}" data-rib="${r.k}" d="${r.d}" fill="${fill}" fill-opacity="${op}" stroke="${on && fEdge !== null ? 'var(--ink)' : '#fff'}" stroke-width="${on && fEdge !== null ? 1.5 : 1}"></path>`;
-    }).join('');
-    const arcs = G.arcs.map((a) => {
-      const lit = ends.indexOf(a.c) >= 0;
-      return `<g class="arc" data-act="ch-theme" data-k="${esc(a.c)}" data-arc="${esc(a.c)}"><path d="${a.d}" fill="${tcol(a.c)}" fill-opacity="${lit || fTheme === null && fEdge === null ? 1 : 0.45}"></path>
-        <text x="${a.x.toFixed(1)}" y="${a.y.toFixed(1)}" text-anchor="${a.anchor}" font-size="18" font-weight="${lit ? 700 : 500}" fill="var(--ink)">${esc(tname(a.c))}</text>
-        <text x="${a.x.toFixed(1)}" y="${(a.y + 21).toFixed(1)}" text-anchor="${a.anchor}" font-size="15" fill="var(--muted)">${plural(tcount(a.c), 'paper')}</text></g>`;
-    }).join('');
-    $('chord-svg').innerHTML = ribs + arcs;
+    return { fEdge, fTheme, ends: fEdge !== null ? [G.shared[fEdge].a, G.shared[fEdge].b] : [fTheme] };
   }
+  function paintChord() {
+    if (!C.built) buildChord();
+    const G = chordGeo(), F = chordFocus();
+    $('chord-svg').querySelectorAll('.rib').forEach((el) => {
+      const r = G.shared[+el.dataset.k];
+      let on, fill;
+      if (F.fEdge !== null) { on = r.k === F.fEdge; fill = on ? tcol(r.a === C.sel ? r.b : r.a) : '#B9C4D3'; }
+      else { on = r.a === F.fTheme || r.b === F.fTheme; fill = on ? tcol(r.a === F.fTheme ? r.b : r.a) : '#B9C4D3'; }
+      el.style.fill = fill;
+      el.style.fillOpacity = F.fEdge !== null ? (on ? 0.9 : 0.12) : (on ? 0.7 : 0.2);
+      el.style.stroke = on && F.fEdge !== null ? 'var(--ink)' : '#fff';
+      el.style.strokeWidth = on && F.fEdge !== null ? 1.5 : 1;
+    });
+    $('chord-svg').querySelectorAll('.arc').forEach((g) => {
+      const lit = F.ends.indexOf(g.dataset.arc) >= 0;
+      g.querySelector('path').style.fillOpacity = lit || (F.fTheme === null && F.fEdge === null) ? 1 : 0.45;
+      g.querySelector('text').style.fontWeight = lit ? 700 : 500;
+    });
+    flowTarget();
+  }
+  /* gentle flow: dots drift along the lit ribbons, away from the theme in focus */
+  const FLOW = { key: '', dots: [], raf: null, last: 0, seen: false, visible: false };
+  function flowTarget() {
+    const G = chordGeo(), F = chordFocus(), g = $('chord-flow');
+    if (!g) return;
+    const lit = F.fEdge !== null ? [G.shared[F.fEdge]] : G.shared.filter((r) => r.a === F.fTheme || r.b === F.fTheme);
+    const from = F.fEdge !== null ? (G.shared[F.fEdge].b === C.sel ? G.shared[F.fEdge].b : G.shared[F.fEdge].a) : F.fTheme;
+    const key = lit.map((r) => r.k).join(',') + '|' + from;
+    if (key === FLOW.key) return;
+    FLOW.key = key; FLOW.dots = [];
+    lit.forEach((r) => {
+      const fwd = r.a === from, n = Math.max(1, Math.min(4, Math.ceil(r.n / 4)));
+      for (let j = 0; j < n; j++) FLOW.dots.push({ p0: fwd ? r.pa : r.pb, p2: fwd ? r.pb : r.pa, t: j / n + Math.random() * 0.1 });
+    });
+    g.innerHTML = FLOW.dots.map(() => '<circle r="4.6" fill="#fff" stroke="rgba(22,32,44,0.45)" stroke-width="1"></circle>').join('');
+    drawFlow();
+  }
+  function drawFlow() {
+    const G = chordGeo(), els = $('chord-flow') ? $('chord-flow').children : [];
+    FLOW.dots.forEach((d, i) => {
+      const t = d.t % 1, u = 1 - t, x = u * u * d.p0[0] + 2 * u * t * G.CX + t * t * d.p2[0], y = u * u * d.p0[1] + 2 * u * t * G.CY + t * t * d.p2[1];
+      if (els[i]) { els[i].setAttribute('cx', x.toFixed(1)); els[i].setAttribute('cy', y.toFixed(1)); els[i].setAttribute('opacity', Math.sin(Math.PI * t).toFixed(2)); }
+    });
+  }
+  function flowLoop(now) {
+    const dt = FLOW.last ? Math.min(50, now - FLOW.last) : 16; FLOW.last = now;
+    if (FLOW.visible && !document.hidden && !reduceMotion()) { FLOW.dots.forEach((d) => { d.t += dt / 4500; }); drawFlow(); }
+    $('chord-flow').style.display = reduceMotion() ? 'none' : '';
+    FLOW.raf = requestAnimationFrame(flowLoop);
+  }
+  function startChordMotion() {
+    const fig = $('chord-fig');
+    const begin = () => {
+      FLOW.visible = true;
+      if (!FLOW.seen) {
+        FLOW.seen = true;
+        if (!reduceMotion()) { $('chord-svg').classList.add('reveal'); setTimeout(() => $('chord-svg').classList.remove('reveal'), 1800); }
+      }
+    };
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { if (es[0].isIntersecting) begin(); else FLOW.visible = false; }, { threshold: 0.25 }).observe(fig);
+    else begin();
+    if (!FLOW.raf) FLOW.raf = requestAnimationFrame(flowLoop);
+  }
+
   function renderChordPanel() {
     const G = chordGeo(), el = $('chord-panel');
     if (C.edge !== null) {

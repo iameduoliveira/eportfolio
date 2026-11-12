@@ -246,8 +246,13 @@ html.hc .era-panel { border-color: var(--ink); }
 .chord-fig { position: relative; }
 .chord-fig svg { width: 100%; height: auto; display: block; }
 .chord-fig .rib, .chord-fig .arc { cursor: pointer; }
-.chord-fig .rib { transition: fill-opacity 0.15s; }
-@media (prefers-reduced-motion: reduce) { .chord-fig .rib { transition: none; } }
+.chord-fig .rib, .chord-fig .arc path { transition: fill 0.35s ease, fill-opacity 0.35s ease, stroke 0.2s; }
+.chord-fig .arc text { transition: font-weight 0.2s; }
+#chord-svg.reveal .rib { animation: rib-in 0.9s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 55ms); transform-box: view-box; transform-origin: 320px 320px; }
+#chord-svg.reveal .arc { animation: arc-in 0.6s ease both; }
+@keyframes rib-in { from { opacity: 0; transform: scale(0.35) rotate(-25deg); } to { opacity: 1; transform: none; } }
+@keyframes arc-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .chord-fig .rib, .chord-fig .arc path, .chord-fig .arc text { transition: none; } #chord-svg.reveal .rib, #chord-svg.reveal .arc { animation: none; } }
 .chord-tip { position: absolute; width: 270px; background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 6px 24px rgba(22, 32, 44, 0.14); padding: 0.8rem 0.95rem; pointer-events: none; font-size: 0.88rem; line-height: 1.45; z-index: 2; display: flex; flex-direction: column; gap: 0.25rem; }
 .chord-tip[hidden] { display: none; }
 .chord-tip strong { font-size: 1.02rem; }
