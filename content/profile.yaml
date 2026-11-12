@@ -29,6 +29,11 @@ highlights:
   title: Dynalytics
   url: https://dynasite.org/#/
   text: An open framework and software ecosystem (R, Python, JavaScript) for analysing and rigorously validating dynamic systems, from transition networks to higher-order networks. I'm one of its contributors.
+- label: Editor · 2027
+  title: Guest editor, Learning Letters.
+  link_text: 'Evidence of Learning in the Age of Generative AI: From Product to Process'
+  url: https://learningletters.org/index.php/learn/announcement/view/1
+  text: ', with Kamila Misiejuk. Full papers due 1 February 2027.'
 - label: Award · 2026
   title: Best Student Paper, AIED 2026.
   link_text: 'Unpacking vibe coding: help-seeking processes in student–AI interactions while programming'

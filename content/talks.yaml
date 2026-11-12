@@ -12,6 +12,11 @@ projects:
   text: An open framework and software ecosystem in R, Python and JavaScript for analysing dynamic systems, from transition networks to higher-order networks, with built-in statistical validation of every finding.
   link_text: Explore Dynalytics
   url: https://dynasite.org/#/
+- kicker: Special issue · guest editor · 2027
+  title: 'Evidence of Learning in the Age of Generative AI: From Product to Process'
+  text: A Learning Letters special issue I'm guest editing with Kamila Misiejuk, on assessing learning when generative AI can produce the artefact itself, shifting the focus from the finished product to the learning process and the judgement students make within it. Full papers are due 1 February 2027, with publication expected around May 2027.
+  link_text: Read the call for papers
+  url: https://learningletters.org/index.php/learn/announcement/view/1
 featured:
 - kicker: Book chapters · open access · 2025
   title: 'Advanced Learning Analytics Methods: AI, Precision and Complexity'
