@@ -1,5 +1,7 @@
 # talks.yaml — the Projects & talks page.
 #   projects: cards at the top of the page (projects you contribute to)
+#   service:  conference committees, editorial roles and other service to the research community (newest first)
+#   service_note: one line shown under the service list (e.g. programme committees and reviewing)
 #   featured: highlighted writing, shown above the talks
 #   type:  Keynote or invited talk | Workshop | University seminar | Writing | In the media
 #   label: the badge shown (Keynote, Invited talk, Panel, Article, ...)
@@ -17,6 +19,20 @@ projects:
   text: A Learning Letters special issue I'm guest editing with Kamila Misiejuk, on assessing learning when generative AI can produce the artefact itself, shifting the focus from the finished product to the learning process and the judgement students make within it. Full papers are due 1 February 2027, with publication expected around May 2027.
   link_text: Read the call for papers
   url: https://learningletters.org/index.php/learn/announcement/view/1
+service:
+- years: 2026–2027
+  role: Guest editor
+  what: 'Learning Letters special issue: Evidence of Learning in the Age of Generative AI (with Kamila Misiejuk)'
+  url: https://learningletters.org/index.php/learn/announcement/view/1
+- years: '2027'
+  role: Posters and demos co-chair
+  what: International Learning Analytics and Knowledge Conference (LAK 2027), Recife, Brazil
+  url: https://www.solaresearch.org/events/lak/lak27/committees/
+- years: '2024'
+  role: Virtual experiences co-chair
+  what: International Conference on Artificial Intelligence in Education (AIED 2024), Recife, Brazil
+  url: https://aied2024.cesar.school/organization/general-organization
+service_note: 'I have been on the program committees of LAK and AIED since 2023, and I regularly review for journals including the Journal of Computer Assisted Learning, the Journal of Educational Data Mining, Smart Learning Environments, Computers & Education, and Computers and Education: Artificial Intelligence.'
 featured:
 - kicker: Book chapters · open access · 2025
   title: 'Advanced Learning Analytics Methods: AI, Precision and Complexity'

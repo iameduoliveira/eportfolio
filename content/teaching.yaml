@@ -15,7 +15,8 @@ subjects:
   - 2024
   - 2025
   - 2026
-  teaching_team: []
+  teaching_team: 
+  - 2027
 - code: COMP90082
   name: Software Project
   coordinator:
@@ -27,6 +28,7 @@ subjects:
   - 2020
   - 2021
   - 2026
+  - 2027
   note: Industry-based capstone
 - code: SWEN90009
   name: Software Requirements Analysis
@@ -55,6 +57,16 @@ subjects:
   - 2017
   - 2018
   - 2021
+- code: SWEN90017 (Semester 2 Entry)
+  name: Masters Advanced Software Project Part 1
+  coordinator:
+  - 2027
+  teaching_team: []
+- code: SWEN90018 (Semester 2 Entry)
+  name: Masters Advanced Software Project Part 2
+  coordinator:
+  - 2027
+  teaching_team: []  
 - code: INFO30005
   name: Web Information Technologies
   coordinator: []

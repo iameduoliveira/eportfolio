@@ -21,6 +21,9 @@
     K = k; W = w; K.items = K.items.map((x, i) => Object.assign({ i }, x));
     const card = (f) => `<div class="feature"><p class="k">${esc(f.kicker)}</p><h3 style="margin:0 0 .5rem;font-size:1.25rem">${esc(f.title)}</h3><p class="muted" style="margin:0 0 .9rem;font-size:.92rem">${esc(f.text)}</p><a href="${esc(f.url)}" style="font-weight:600;font-size:.92rem">${esc(f.link_text)} →</a></div>`;
     $('projects').innerHTML = (K.projects || []).map(card).join('');
+    $('service').innerHTML = (K.service || []).map((s) => `<li class="hl"><span class="lab">${esc(s.years)}</span><span class="body"><strong style="font-weight:600">${esc(s.role)}.</strong> ${s.url ? `<a href="${esc(s.url)}">${esc(s.what)}</a>` : esc(s.what)}</span></li>`).join('');
+    $('service').parentElement.hidden = !(K.service || []).length && !K.service_note;
+    if (K.service_note) { $('service-note').textContent = K.service_note; $('service-note').hidden = false; }
     $('featured').innerHTML = (K.featured || []).map(card).join('');
     $('featured').parentElement.hidden = !(K.featured || []).length;
     const spoken = K.items.filter((x) => SPOKEN[x.type]);

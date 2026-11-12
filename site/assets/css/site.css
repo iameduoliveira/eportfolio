@@ -188,6 +188,9 @@ dl.meta dd { margin: 0; }
 .sq { display: inline-block; width: 30px; height: 30px; border-radius: 6px; }
 .sq-c { background: var(--navy); }
 .sq-t { background: var(--navy-soft); border: 2px solid var(--navy); }
+.sq-plan { opacity: 0.45; border-style: dashed; }
+.sq-c.sq-plan { border: 2px dashed var(--navy); background: #8FAEDB; opacity: 1; }
+th.planned { color: var(--muted); font-style: italic; position: relative; }
 .feature { border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem; background: var(--soft); }
 .feature .k { margin: 0 0 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; color: var(--navy); text-transform: uppercase; }
 
